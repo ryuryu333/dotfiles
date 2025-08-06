@@ -4,18 +4,14 @@
   home.username = "ryu";
   home.homeDirectory = "/home/ryu";
 
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05";
 
   home.packages = [
-
+    pkgs.git
   ];
 
   home.file = {
-
-  };
-
-  home.sessionVariables = {
-
+    ".gitconfig".source = ./.gitconfig;
   };
 
   programs.home-manager.enable = true;
