@@ -6,8 +6,10 @@
 
   home.stateVersion = "25.05";
 
-  home.packages = [
-    pkgs.git
+  home.packages = with pkgs; [
+    git
+    direnv
+    nix-direnv
   ];
 
   home.file = {
