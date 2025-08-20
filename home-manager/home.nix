@@ -11,6 +11,7 @@
     bash
     direnv
     nix-direnv
+    jq # JSONデータを操作
   ];
 
   home.file = {
