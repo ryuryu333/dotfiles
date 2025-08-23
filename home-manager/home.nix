@@ -12,6 +12,8 @@
     direnv
     nix-direnv
     jq # JSONデータを操作
+    openjdk # java PlantUML 利用に必要
+    graphviz # PlantUML 利用に必要
   ];
 
   home.file = {
