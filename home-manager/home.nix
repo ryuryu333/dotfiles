@@ -12,6 +12,7 @@
     direnv
     nix-direnv
     jq # JSONデータを操作
+    tree # ディレクトリ構造を表示
     openjdk # java PlantUML 利用に必要
     graphviz # PlantUML 利用に必要
   ];
