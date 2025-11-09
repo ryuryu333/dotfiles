@@ -4,13 +4,14 @@
   home.username = "ryu";
   home.homeDirectory = "/home/ryu";
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
     git
     bash
     direnv
     nix-direnv
+    devenv
     jq # JSONデータを操作
     tree # ディレクトリ構造を表示
     openjdk # java PlantUML 利用に必要
