@@ -8,6 +8,7 @@
     git
     direnv
     nix-direnv
+    nixfmt
   ];
 
   home.file = {
