@@ -10,7 +10,19 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }: {
+    {
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    let
+      supportSystems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs supportSystems;
+    in
+    {
       homeConfigurations = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
         "ryu@main" = home-manager.lib.homeManagerConfiguration {
@@ -20,6 +32,16 @@
             ./home/wsl.nix
           ];
         };
+        # MacBook Pro M1
+        "ryu@MacBook.local" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          modules = [
+            ./home/common.nix
+            ./home/mac.nix
+          ];
+        };
       };
+
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
     };
 }
