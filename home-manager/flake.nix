@@ -41,7 +41,7 @@
           ];
         };
       };
-
+      # home-manager で nixfmt を導入する前にフォーマッターを利用するために定義
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
     };
 }
