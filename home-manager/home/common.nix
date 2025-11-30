@@ -3,7 +3,7 @@
 {
   programs.home-manager.enable = true;
   home.stateVersion = "26.05";
-  
+
   home.packages = with pkgs; [
     git
     direnv
