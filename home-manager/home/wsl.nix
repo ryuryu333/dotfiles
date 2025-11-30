@@ -19,9 +19,9 @@
   ];
 
   home.file = {
-    ".gitconfig".source = git/.gitconfig;
-    ".bashrc".source = bash/.bashrc;
-    ".profile".source = bash/.profile;
+    ".gitconfig".source = ../git/.gitconfig;
+    ".bashrc".source = ../bash/.bashrc;
+    ".profile".source = ../bash/.profile;
   };
 
   programs.home-manager.enable = true;
