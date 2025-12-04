@@ -118,3 +118,6 @@ fi
 
 # direnv
 eval "$(direnv hook bash)"
+
+# home-manager
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
