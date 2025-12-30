@@ -11,6 +11,5 @@
 
   home.file = {
     ".zshrc".source = ../zsh/.zshrc;
-    ".profile".source = ../zsh/.profile;
   };
 }
