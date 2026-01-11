@@ -15,6 +15,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       nix-darwin,
@@ -36,6 +37,22 @@
           modules = [
             ./home-manager/home/common.nix
             ./home-manager/home/mac.nix
+          ];
+        };
+      };
+
+      # MacBook Pro M1
+      darwinConfigurations = {
+        "MacBook" = nix-darwin.lib.darwinSystem {
+          specialArgs = { self = self;};
+          modules = [
+            ./nix-darwin/MacBookProM1/configuration.nix
+            # home-manager.darwinModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.jdoe = ./home.nix;
+            # }
           ];
         };
       };
