@@ -15,6 +15,16 @@
       ];
   };
 
+  homebrew = {
+    enable = true;
+    brews = [
+    ];
+    casks = [
+        "discord"
+    ];
+  };
+
+  system.primaryUser = "ryu"; # Need for using homebrew.enable
   system.stateVersion = 6;
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
