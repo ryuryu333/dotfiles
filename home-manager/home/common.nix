@@ -9,6 +9,7 @@
     direnv
     nix-direnv
     nixfmt
+    tree # ディレクトリ構造を表示
   ];
 
   home.file = {
