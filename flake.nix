@@ -47,12 +47,17 @@
           specialArgs = { self = self;};
           modules = [
             ./nix-darwin/MacBookProM1/configuration.nix
-            # home-manager.darwinModules.home-manager
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users.jdoe = ./home.nix;
-            # }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.ryu = {
+                imports = [
+                  ./home-manager/home/common.nix
+                  ./home-manager/home/mac.nix
+                ];
+              };
+            }
           ];
         };
       };
