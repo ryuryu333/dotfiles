@@ -6,6 +6,12 @@
 
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "vscode"
+      "discord"
+    ];
   system.stateVersion = 6;
   system.configurationRevision = self.rev or self.dirtyRev or null;
   # environment.systemPackages =
