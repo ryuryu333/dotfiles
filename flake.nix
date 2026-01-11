@@ -31,14 +31,6 @@
             ./home-manager/home/wsl.nix
           ];
         };
-        # MacBook Pro M1
-        "ryu@MacBook.local" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          modules = [
-            ./home-manager/home/common.nix
-            ./home-manager/home/mac.nix
-          ];
-        };
       };
 
       # MacBook Pro M1
