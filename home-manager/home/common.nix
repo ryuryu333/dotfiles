@@ -10,6 +10,7 @@
     nix-direnv
     nixfmt
     tree # ディレクトリ構造を表示
+    go-task # task runner
   ];
 
   home.file = {
