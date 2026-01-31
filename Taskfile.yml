@@ -24,3 +24,15 @@ tasks:
         platforms: [linux/amd64]
       - cmd: sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
         platforms: [darwin/arm64]
+
+  create_symlinks:
+    desc: Create symlinks for home-manager and nix-darwin (only macOS)
+    cmds:
+      - cmd: mkdir -p ~/.config/home-manager
+        platforms: [linux/amd64]
+      - cmd: nix run home-manager/master --switch
+        platforms: [linux/amd64]
+      - cmd: sudo mkdir -p /etc/nix-darwin
+        platforms: [darwin/arm64]
+      - cmd: sudo ln -s /Users/ryu/work/dotfiles/flake.nix /etc/nix-darwin/flake.nix
+        platforms: [darwin/arm64]
