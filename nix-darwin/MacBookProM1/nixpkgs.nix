@@ -3,7 +3,6 @@
   system,
   ...
 }:
-
 {
   nixpkgs = {
     hostPlatform = system;
