@@ -21,11 +21,38 @@
       nix-darwin,
       ...
     }:
+    let
+      my_pc =
+        let
+          pc_info = {
+            # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
+            wsl = {
+              system = "x86_64-linux";
+              user = "ryu";
+              hostname = "main";
+            };
+            # MacBook Pro M1
+            mac = {
+              system = "aarch64-darwin";
+              user = "ryu";
+              hostname = "MacBook"; # home-manger 単独の時：MacBook.local
+            };
+          };
+        in
+        builtins.mapAttrs (
+          name: pc:
+          pc
+          // {
+            fullname = "${pc.user}@${pc.hostname}";
+            pkgs = nixpkgs.legacyPackages.${pc.system};
+          }
+        ) pc_info;
+    in
     {
       homeConfigurations = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-        "ryu@main" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        ${my_pc.wsl.fullname} = home-manager.lib.homeManagerConfiguration {
+          inherit (my_pc.wsl) pkgs;
           modules = [
             ./home-manager/home/common.nix
             ./home-manager/home/wsl.nix
@@ -33,23 +60,16 @@
         };
       };
 
-      # MacBook Pro M1
       darwinConfigurations = {
-        "MacBook" = nix-darwin.lib.darwinSystem {
-          specialArgs = { self = self;};
+        # MacBook Pro M1
+        ${my_pc.mac.hostname} = nix-darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit self;
+            inherit (my_pc.mac) user system;
+          };
           modules = [
             ./nix-darwin/MacBookProM1/configuration.nix
             home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.ryu = {
-                imports = [
-                  ./home-manager/home/common.nix
-                  ./home-manager/home/mac.nix
-                ];
-              };
-            }
           ];
         };
       };
