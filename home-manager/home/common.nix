@@ -13,7 +13,7 @@
     go-task # task runner
   ];
 
-  home.file = {
-    ".gitconfig".source = ../git/.gitconfig;
+  xdg.configFile = {
+    "git/config".source = ../git/.gitconfig;
   };
 }
