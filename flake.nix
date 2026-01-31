@@ -51,7 +51,7 @@
     {
       homeConfigurations = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-        ${my_pc.wsl.fullname} = home-manager.lib.homeManagerConfiguration {
+        "${my_pc.wsl.fullname}" = home-manager.lib.homeManagerConfiguration {
           inherit (my_pc.wsl) pkgs;
           modules = [
             ./home-manager/home/common.nix
@@ -62,7 +62,7 @@
 
       darwinConfigurations = {
         # MacBook Pro M1
-        ${my_pc.mac.hostname} = nix-darwin.lib.darwinSystem {
+        "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
           specialArgs = {
             inherit self;
             inherit (my_pc.mac) user system;
