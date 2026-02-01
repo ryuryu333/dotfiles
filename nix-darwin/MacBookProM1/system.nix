@@ -29,7 +29,7 @@
     # Dock
     dock = {
       show-process-indicators = true; # 起動中アプリをインジケーターに表示
-      static-only = true; # 最近使ったアプリを非表示
+      show-recents = false; # 最近使ったアプリを非表示
       launchanim = false; # アプリ起動時のアニメーションを無効化
       mineffect = "scale"; # ウィンドウを閉じるときのエフェクトをスケールに設定
     };
