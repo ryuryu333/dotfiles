@@ -16,6 +16,14 @@ tasks:
       - cmd: sudo darwin-rebuild switch
         platforms: [darwin/arm64]
 
+  update:
+    desc: Update pkgs
+    cmds:
+      - cmd: nix flake lock --update-input nixpkgs
+      - cmd: brew update
+        platforms: [darwin/arm64]
+      - cmd: echo "Update complete, run 'task' to switch"
+
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
