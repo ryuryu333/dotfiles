@@ -54,25 +54,32 @@
     enableKeyMapping = true;
     userKeyMapping =
       let
-        remap = src: dst: {
-          HIDKeyboardModifierMappingSrc = src;
-          HIDKeyboardModifierMappingDst = dst;
-        };
+        mkKeyMapping =
+          let
+            hexToInt = s: pkgs.lib.trivial.fromHexString s;
+          in
+          src: dst: {
+            HIDKeyboardModifierMappingSrc = hexToInt src;
+            HIDKeyboardModifierMappingDst = hexToInt dst;
+          };
         # Key-map References:
         #   https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+        # e.g.
+        #   07000 = Keyboard, 000E0 = Keyboard Left Control
+        #     -> 0x7000000E3 = Keyboard Left Command
         # macOS Fn key:
-        #   https://github.com/UltimateHackingKeyboard/agent/issues/1366
-        left_control = 30064771296; # 0xE0
-        left_command = 30064771299; # 0xE3
-        caps_lock = 30064771129; # 0x39
-        fn_key = 1095216660483; # 0xFF00000003
+        #   https://apple.stackexchange.com/questions/340607/what-is-the-hex-id-for-fn-key%EF%BC%89
+        leftControl = "0x7000000E0";
+        leftCommand = "0x7000000E3";
+        capsLock = "0x700000039";
+        fnKey = "0xFF00000003";
       in
       [
         # Left Control <-> GUI(Command)
-        (remap left_control left_command)
-        (remap left_command left_control)
+        (mkKeyMapping leftControl leftCommand)
+        (mkKeyMapping leftCommand leftControl)
         # Caps Lock -> Fn
-        (remap caps_lock fn_key)
+        (mkKeyMapping capsLock fnKey)
       ];
   };
 
