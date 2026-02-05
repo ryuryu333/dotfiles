@@ -5,8 +5,6 @@
   home.homeDirectory = "/Users/ryu";
   home.packages = with pkgs; [
     zsh
-    vscode
-    discord
   ];
 
   home.file = {

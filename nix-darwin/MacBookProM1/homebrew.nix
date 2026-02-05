@@ -18,6 +18,8 @@
     casks = [
       "linearmouse"
       "elecom-mouse-util"
+      "discord"
+      "visual-studio-code"
     ];
   };
 }
