@@ -5,6 +5,7 @@
   home.homeDirectory = "/Users/ryu";
   home.packages = with pkgs; [
     zsh
+    slack
   ];
 
   home.file = {
