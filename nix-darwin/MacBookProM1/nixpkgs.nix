@@ -9,8 +9,6 @@
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (pkgs.lib.getName pkg) [
-        "vscode"
-        "discord"
         "slack"
       ];
   };
