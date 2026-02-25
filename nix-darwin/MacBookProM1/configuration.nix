@@ -2,7 +2,7 @@
   pkgs,
   self,
   user,
-  system,
+  hostPlatform,
   ...
 }:
 {
