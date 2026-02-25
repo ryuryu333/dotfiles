@@ -11,6 +11,7 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs =
@@ -19,6 +20,7 @@
       nixpkgs,
       home-manager,
       nix-darwin,
+      nix-homebrew,
       ...
     }:
     let
@@ -70,6 +72,7 @@
           modules = [
             ./nix-darwin/MacBookProM1/configuration.nix
             home-manager.darwinModules.home-manager
+            nix-homebrew.darwinModules.nix-homebrew
           ];
         };
       };
