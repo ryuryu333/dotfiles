@@ -12,7 +12,6 @@
     primaryUser = user;
   };
 
-  # avoid conflicts with Determinate-Nix
   nix.enable = false;
 
   users.users.${user}.home = "/Users/${user}";
