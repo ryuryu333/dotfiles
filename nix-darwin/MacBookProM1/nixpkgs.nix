@@ -1,11 +1,11 @@
 {
   pkgs,
-  system,
+  hostPlatform,
   ...
 }:
 {
   nixpkgs = {
-    hostPlatform = system;
+    inherit hostPlatform;
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (pkgs.lib.getName pkg) [

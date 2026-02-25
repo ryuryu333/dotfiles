@@ -29,13 +29,13 @@
           pc_info = {
             # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
             wsl = {
-              system = "x86_64-linux";
+              hostPlatform = "x86_64-linux";
               user = "ryu";
               hostname = "main";
             };
             # MacBook Pro M1
             mac = {
-              system = "aarch64-darwin";
+              hostPlatform = "aarch64-darwin";
               user = "ryu";
               hostname = "MacBook"; # home-manger 単独の時：MacBook.local
             };
@@ -46,7 +46,7 @@
           pc
           // {
             fullname = "${pc.user}@${pc.hostname}";
-            pkgs = nixpkgs.legacyPackages.${pc.system};
+            pkgs = nixpkgs.legacyPackages.${pc.hostPlatform};
           }
         ) pc_info;
     in
@@ -67,7 +67,7 @@
         "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
           specialArgs = {
             inherit self;
-            inherit (my_pc.mac) user system;
+            inherit (my_pc.mac) user hostPlatform;
           };
           modules = [
             ./nix-darwin/MacBookProM1/configuration.nix
