@@ -11,9 +11,9 @@ tasks:
     desc: Switch environment via home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
     cmds:
-      - cmd: home-manager switch
+      - cmd: home-manager switch --flake .
         platforms: [linux/amd64]
-      - cmd: sudo darwin-rebuild switch
+      - cmd: sudo darwin-rebuild switch --flake .
         platforms: [darwin/arm64]
 
   update:
@@ -28,17 +28,18 @@ tasks:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
     cmds:
-      - cmd: nix run home-manager/master --switch
+      - cmd: nix run home-manager/master -- switch
         platforms: [linux/amd64]
       - cmd: sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
         platforms: [darwin/arm64]
 
   create_symlinks:
     desc: Create symlinks for home-manager and nix-darwin (only macOS)
+    internal: true  # outdated, currently use --flake instead
     cmds:
       - cmd: mkdir -p ~/.config/home-manager
         platforms: [linux/amd64]
-      - cmd: nix run home-manager/master --switch
+      - cmd: nix run home-manager/master -- switch
         platforms: [linux/amd64]
       - cmd: sudo mkdir -p /etc/nix-darwin
         platforms: [darwin/arm64]
