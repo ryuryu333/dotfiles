@@ -22,8 +22,7 @@
       home-manager,
       nix-darwin,
       nix-homebrew,
-      nix-versions,
-      ...
+      nix-versions
     }:
     let
       my_pc =
