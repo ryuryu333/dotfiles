@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-versions, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -11,6 +11,9 @@
     nixfmt
     tree # ディレクトリ構造を表示
     go-task # task runner
+  ]
+  ++ [
+    nix-versions.packages.${pkgs.system}.nix-versions
   ];
 
   xdg.configFile = {

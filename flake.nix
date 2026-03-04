@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-versions.url = "github:vic/nix-versions";
   };
 
   outputs =
@@ -21,6 +22,7 @@
       home-manager,
       nix-darwin,
       nix-homebrew,
+      nix-versions,
       ...
     }:
     let
@@ -55,6 +57,9 @@
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
         "${my_pc.wsl.fullname}" = home-manager.lib.homeManagerConfiguration {
           inherit (my_pc.wsl) pkgs;
+          extraSpecialArgs = {
+            inherit nix-versions;
+          };
           modules = [
             ./home-manager/home/common.nix
             ./home-manager/home/wsl.nix
