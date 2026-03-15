@@ -1,5 +1,5 @@
 {
-  pkgs,
+  lib,
   ...
 }:
 {
@@ -56,7 +56,7 @@
       let
         mkKeyMapping =
           let
-            hexToInt = s: pkgs.lib.trivial.fromHexString s;
+            hexToInt = lib.trivial.fromHexString;
           in
           src: dst: {
             HIDKeyboardModifierMappingSrc = hexToInt src;
