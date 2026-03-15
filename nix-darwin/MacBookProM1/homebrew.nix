@@ -1,5 +1,4 @@
 {
-  pkgs,
   user,
   nix-homebrew,
   ...
