@@ -70,7 +70,7 @@
         # MacBook Pro M1
         "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
           specialArgs = {
-            inherit self;
+            inherit self nix-versions;
             inherit (my_pc.mac) user hostPlatform;
           };
           modules = [
