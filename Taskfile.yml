@@ -19,7 +19,7 @@ tasks:
   update:
     desc: Update pkgs
     cmds:
-      - cmd: nix flake lock --update-input nixpkgs
+      - cmd: nix flake update nixpkgs
       - cmd: brew update
         platforms: [darwin/arm64]
       - cmd: echo "Update complete, run 'task' to switch"
