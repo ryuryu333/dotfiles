@@ -11,8 +11,8 @@
   };
   home-manager.users.${user} = {
     imports = [
-      ../../home-manager/common.nix
-      ../../home-manager/mac.nix
+      ../../../home-manager/common.nix
+      ../../../home-manager/mac.nix
     ];
   };
 }
