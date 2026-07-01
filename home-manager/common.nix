@@ -13,7 +13,7 @@
     go-task # task runner
   ]
   ++ [
-    nix-versions.packages.${pkgs.system}.nix-versions
+    nix-versions.packages.${pkgs.stdenv.hostPlatform.system}.nix-versions
   ];
 
   xdg.configFile = {
