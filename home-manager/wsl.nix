@@ -15,8 +15,8 @@
   ];
 
   home.file = {
-    ".bashrc".source = ../bash/.bashrc;
-    ".profile".source = ../bash/.profile;
+    ".bashrc".source = ../app-config/bash/.bashrc;
+    ".profile".source = ../app-config/bash/.profile;
   };
 
   # manual command

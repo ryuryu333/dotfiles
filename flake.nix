@@ -60,8 +60,8 @@
             inherit nix-versions;
           };
           modules = [
-            ./home-manager/home/common.nix
-            ./home-manager/home/wsl.nix
+            ./home-manager/common.nix
+            ./home-manager/wsl.nix
           ];
         };
       };
