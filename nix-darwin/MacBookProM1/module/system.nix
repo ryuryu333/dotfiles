@@ -46,6 +46,14 @@
         # Finder
         AppleMenuBarVisibleInFullscreen = true; # フルスクリーン時にメニューバーを表示
       };
+      # フルアクセス権限が必要になるので、普段はコメントアウト
+      # 普通に実行するとエラー；Could not write domain com.apple.universalaccess; exiting
+      # "com.apple.universalaccess" = {
+      #   # アクセシビリティ
+      #   increaseContrast = true; # コントラストを上げる
+      #   contrast = 0.5; # コントラスト
+      #   mouseDriverCursorSize = 2.8; # カーソルサイズ
+      # };
     };
   };
 
