@@ -1,0 +1,19 @@
+{
+  self,
+  user,
+  hostPlatform,
+  ...
+}:
+{
+  system = {
+    stateVersion = 6;
+    configurationRevision = self.rev or self.dirtyRev or null;
+    primaryUser = user;
+  };
+
+  nix.enable = false;
+
+  users.users.${user}.home = "/Users/${user}";
+
+  programs.zsh.enable = true;
+}
