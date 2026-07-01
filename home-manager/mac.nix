@@ -9,7 +9,7 @@
   ];
 
   home.file = {
-    ".zshrc".source = ../zsh/.zshrc;
-    ".zprofile".source = ../zsh/.zprofile;
+    ".zshrc".source = ../app-config/zsh/.zshrc;
+    ".zprofile".source = ../app-config/zsh/.zprofile;
   };
 }
