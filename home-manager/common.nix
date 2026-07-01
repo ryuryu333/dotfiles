@@ -17,7 +17,7 @@
   ];
 
   xdg.configFile = {
-    "git/config".source = ../git/.gitconfig;
+    "git/config".source = ../app-config/git/.gitconfig;
   };
 
   nix.registry = {
