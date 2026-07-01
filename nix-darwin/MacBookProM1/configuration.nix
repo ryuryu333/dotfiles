@@ -18,9 +18,9 @@
   programs.zsh.enable = true;
 
   imports = [
-    ./nixpkgs.nix
-    ./homebrew.nix
-    ./home_manager.nix
-    ./system.nix
+    ./module/nixpkgs.nix
+    ./module/homebrew.nix
+    ./module/home_manager.nix
+    ./module/system.nix
   ];
 }
