@@ -6,8 +6,6 @@
 
   home.packages = with pkgs; [
     git
-    direnv
-    nix-direnv
     nixfmt
     tree # ディレクトリ構造を表示
     go-task # task runner
@@ -15,6 +13,12 @@
   ++ [
     nix-versions.packages.${pkgs.stdenv.hostPlatform.system}.nix-versions
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   xdg.configFile = {
     "git/config".source = ../app-config/git/.gitconfig;
