@@ -88,19 +88,9 @@
         };
       };
 
-      checks = {
-        x86_64-linux.wsl = self.homeConfigurations."ryu@main".activationPackage;
-
-        aarch64-darwin.mac = self.darwinConfigurations.MacBook.system;
-      };
+      checks = import ./flake/checks.nix { inherit self; };
     }
-    // flake-utils.lib.eachSystem supportSystems (
-      system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        formatter = pkgs.nixfmt-tree;
-      }
-    );
+    // import ./flake/formatter.nix {
+      inherit nixpkgs flake-utils supportSystems;
+    };
 }
