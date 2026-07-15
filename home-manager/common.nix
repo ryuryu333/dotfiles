@@ -22,6 +22,10 @@
     nix-direnv.enable = true;
   };
 
+  imports = [
+    ../app-config/zsh/common.nix
+  ];
+
   xdg.configFile = {
     "git/config".source = ../app-config/git/.gitconfig;
   };
