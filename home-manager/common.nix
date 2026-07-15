@@ -16,12 +16,6 @@
     nix-versions.packages.${pkgs.stdenv.hostPlatform.system}.nix-versions
   ];
 
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
-  };
-
   imports = [
     ../app-config
   ];
