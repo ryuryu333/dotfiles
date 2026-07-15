@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +26,7 @@
       nixpkgs,
       flake-utils,
       home-manager,
+      system-manager,
       nix-darwin,
       nix-homebrew,
       nix-versions,
@@ -47,6 +52,10 @@
       };
     in
     {
+      systemConfigs.default = system-manager.lib.makeSystemConfig {
+        modules = [ ./system-manager/system.nix ];
+      };
+
       homeConfigurations = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
         "${my_pc.wsl.user}@${my_pc.wsl.hostname}" = home-manager.lib.homeManagerConfiguration {
