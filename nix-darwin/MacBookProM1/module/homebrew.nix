@@ -27,6 +27,7 @@
       "elecom-mouse-util"
       "discord"
       "visual-studio-code"
+      "slack"
     ];
   };
 }
