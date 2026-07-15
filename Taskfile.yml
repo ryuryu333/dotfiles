@@ -38,6 +38,18 @@ tasks:
     cmds:
       - cmd: nix fmt
 
+  first:
+    desc: First time setup for System Manager (only WSL)
+    platforms: [linux/amd64]
+    cmds:
+      - cmd: nix run 'github:numtide/system-manager' -- switch --flake . --sudo
+
+  system:
+    desc: Switch environment via System Manager (only WSL)
+    platforms: [linux/amd64]
+    cmds:
+      - cmd: nix run 'github:numtide/system-manager' -- switch --flake . --sudo
+
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
