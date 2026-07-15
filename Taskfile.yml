@@ -33,7 +33,7 @@ tasks:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
     cmds:
-      - cmd: nix run home-manager/master -- switch
+      - cmd: nix run home-manager/master -- switch --flake .
         platforms: [linux/amd64]
       - cmd: sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
         platforms: [darwin/arm64]
