@@ -23,8 +23,7 @@
   };
 
   imports = [
-    ../app-config/git/common.nix
-    ../app-config/zsh/common.nix
+    ../app-config
   ];
 
   nix.registry = {
