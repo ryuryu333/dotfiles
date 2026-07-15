@@ -74,7 +74,7 @@
             inherit (my_pc.mac) user hostPlatform;
           };
           modules = [
-            ./nix-darwin/MacBookProM1/configuration.nix
+            ./nix-darwin/MacBookProM1
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
           ];
