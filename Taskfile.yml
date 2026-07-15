@@ -24,6 +24,11 @@ tasks:
         platforms: [darwin/arm64]
       - cmd: echo "Update complete, run 'task' to switch"
 
+  gc:
+    desc: Clean Nix profiles and store older than 30 days
+    cmds:
+      - cmd: nh clean all --keep-since 30d --keep-one
+
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
