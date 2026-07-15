@@ -1,11 +1,11 @@
 {
   programs.zsh = {
     enable = true;
+    autosuggestion.enable = true;
     oh-my-zsh = {
       enable = true;
       plugins = [
         "safe-paste"
-        "zsh-autosuggestions"
       ];
       custom = "${./ohmyzsh}";
       theme = "mytheme";
