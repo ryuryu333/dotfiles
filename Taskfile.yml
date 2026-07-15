@@ -33,6 +33,10 @@ tasks:
     desc: Run all check
     cmd: nix flake check --all-systems
 
+  fmt:
+    desc: Format nix files
+    cmds:
+      - cmd: nix fmt
 
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
