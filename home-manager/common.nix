@@ -3,11 +3,10 @@
 {
   programs.home-manager.enable = true;
   home.stateVersion = "26.05";
-  
+
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    git
     nixfmt
     tree # ディレクトリ構造を表示
     go-task # task runner
@@ -24,12 +23,9 @@
   };
 
   imports = [
+    ../app-config/git/common.nix
     ../app-config/zsh/common.nix
   ];
-
-  xdg.configFile = {
-    "git/config".source = ../app-config/git/.gitconfig;
-  };
 
   nix.registry = {
     templates = {

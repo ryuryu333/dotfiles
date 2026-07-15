@@ -1,0 +1,14 @@
+{
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "ryuryu333";
+        email = "risarisa062518@gmail.com";
+      };
+      core.editor = "code --wait";
+      init.defaultBranch = "main";
+      push.default = "current";
+    };
+  };
+}
