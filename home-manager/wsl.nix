@@ -5,10 +5,6 @@
   home.homeDirectory = "/home/ryu";
 
   home.packages = with pkgs; [
-    devenv
-    jq # JSONデータを操作
-    openjdk # java PlantUML 利用に必要
-    graphviz # PlantUML 利用に必要
     docker
     colima # for docker
   ];
