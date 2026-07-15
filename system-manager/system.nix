@@ -17,7 +17,7 @@
       # Add directories and files to /etc and set their permissions.
       etc = {
         "nix/nix.custom.conf".text = ''
-          extra-trusted-substituters = https://cache.numtide.com
+          extra-substituters = https://cache.numtide.com
           extra-trusted-public-keys = niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=
         '';
 
