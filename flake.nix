@@ -57,6 +57,7 @@
         "${my_pc.wsl.fullname}" = home-manager.lib.homeManagerConfiguration {
           inherit (my_pc.wsl) pkgs;
           extraSpecialArgs = {
+            inherit (my_pc.wsl) user;
             inherit nix-versions;
           };
           modules = [

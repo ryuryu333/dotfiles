@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
-  home.username = "ryu";
-  home.homeDirectory = "/home/ryu";
+  home.username = user;
+  home.homeDirectory = "/home/${user}";
 
   home.packages = with pkgs; [
     docker
