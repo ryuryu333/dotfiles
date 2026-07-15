@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,12 +20,17 @@
     {
       self,
       nixpkgs,
+      flake-utils,
       home-manager,
       nix-darwin,
       nix-homebrew,
-      nix-versions
+      nix-versions,
     }:
     let
+      supportSystems = with flake-utils.lib.system; [
+        x86_64-linux
+        aarch64-darwin
+      ];
       my_pc =
         let
           pc_info = {
@@ -83,11 +89,18 @@
       };
 
       checks = {
-        x86_64-linux.wsl =
-          self.homeConfigurations."ryu@main".activationPackage;
+        x86_64-linux.wsl = self.homeConfigurations."ryu@main".activationPackage;
 
-        aarch64-darwin.mac =
-          self.darwinConfigurations.MacBook.system;
+        aarch64-darwin.mac = self.darwinConfigurations.MacBook.system;
       };
-    };
+    }
+    // flake-utils.lib.eachSystem supportSystems (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        formatter = pkgs.nixfmt-tree;
+      }
+    );
 }
