@@ -18,7 +18,7 @@
       exec "$HOME/.nix-profile/bin/zsh"
     fi
   '';
-  
+
   # manual command
   # for colima usage (for docker)
   # sudo usermod -aG kvm $USER
