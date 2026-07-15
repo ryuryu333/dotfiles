@@ -1,4 +1,9 @@
-{ config, pkgs, nix-versions, ... }:
+{
+  config,
+  pkgs,
+  nix-versions,
+  ...
+}:
 {
   imports = [
     ./module/base.nix
