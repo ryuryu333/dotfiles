@@ -31,37 +31,26 @@
         x86_64-linux
         aarch64-darwin
       ];
-      my_pc =
-        let
-          pc_info = {
-            # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-            wsl = {
-              hostPlatform = "x86_64-linux";
-              user = "ryu";
-              hostname = "main";
-            };
-            # MacBook Pro M1
-            mac = {
-              hostPlatform = "aarch64-darwin";
-              user = "ryu";
-              hostname = "MacBook"; # home-manger 単独の時：MacBook.local
-            };
-          };
-        in
-        builtins.mapAttrs (
-          name: pc:
-          pc
-          // {
-            fullname = "${pc.user}@${pc.hostname}";
-            pkgs = nixpkgs.legacyPackages.${pc.hostPlatform};
-          }
-        ) pc_info;
+      my_pc = {
+        # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
+        wsl = {
+          hostPlatform = "x86_64-linux";
+          user = "ryu";
+          hostname = "main";
+        };
+        # MacBook Pro M1
+        mac = {
+          hostPlatform = "aarch64-darwin";
+          user = "ryu";
+          hostname = "MacBook"; # home-manger 単独の時：MacBook.local
+        };
+      };
     in
     {
       homeConfigurations = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-        "${my_pc.wsl.fullname}" = home-manager.lib.homeManagerConfiguration {
-          inherit (my_pc.wsl) pkgs;
+        "${my_pc.wsl.user}@${my_pc.wsl.hostname}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${my_pc.wsl.hostPlatform};
           extraSpecialArgs = {
             inherit (my_pc.wsl) user;
             inherit nix-versions;
