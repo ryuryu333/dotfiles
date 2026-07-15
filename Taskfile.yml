@@ -29,6 +29,11 @@ tasks:
     cmds:
       - cmd: nh clean all --keep-since 30d --keep-one
 
+  check:
+    desc: Run all check
+    cmd: nix flake check --all-systems
+
+
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
