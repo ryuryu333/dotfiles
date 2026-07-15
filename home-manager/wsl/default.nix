@@ -1,5 +1,4 @@
-{ config, pkgs, lazynix, ... }:
-
+{ pkgs, ... }:
 {
   home.username = "ryu";
   home.homeDirectory = "/home/ryu";
