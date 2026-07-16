@@ -57,6 +57,9 @@
     in
     {
       systemConfigs.default = system-manager.lib.makeSystemConfig {
+        specialArgs = {
+          inherit (my_pc.wsl) hostPlatform;
+        };
         modules = [ ./system-manager ];
       };
 

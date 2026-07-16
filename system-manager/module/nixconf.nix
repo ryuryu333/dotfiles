@@ -1,7 +1,7 @@
-{ ... }:
+{ hostPlatform, ... }:
 {
   config = {
-    nixpkgs.hostPlatform = "x86_64-linux";
+    nixpkgs.hostPlatform = hostPlatform;
 
     environment = {
       # Add directories and files to /etc and set their permissions.
