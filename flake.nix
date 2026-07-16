@@ -57,7 +57,7 @@
     in
     {
       systemConfigs.default = system-manager.lib.makeSystemConfig {
-        modules = [ ./system-manager/system.nix ];
+        modules = [ ./system-manager ];
       };
 
       homeConfigurations = {
