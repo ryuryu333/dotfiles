@@ -1,6 +1,6 @@
 {
   description = "Dotfiles configuration";
-
+  
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -85,6 +85,16 @@
           ];
         };
       };
+
+      apps.x86_64-linux.system_manager =
+        let
+          sm_pkg = system-manager.packages.x86_64-linux.default;
+          sm_bin = nixpkgs.lib.getExe sm_pkg;
+        in
+        {
+          type = "app";
+          program = sm_bin;
+        };
 
       checks = import ./flake/checks.nix { inherit self; };
     }

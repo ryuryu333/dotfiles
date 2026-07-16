@@ -48,7 +48,7 @@ tasks:
     desc: Switch environment via System Manager (only WSL)
     platforms: [linux/amd64]
     cmds:
-      - cmd: nix run 'github:numtide/system-manager' -- switch --flake . --sudo
+      - cmd: nix run .#system_manager -- switch --flake . --sudo
 
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
