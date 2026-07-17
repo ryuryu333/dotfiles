@@ -43,6 +43,16 @@ tasks:
     dir: config/winget
     cmd: nickel export --format yaml --output output/configuration.winget main.ncl
 
+  winget:apply:
+    desc: Apply WinGet configuration on Windows host
+    dir: config/winget
+    cmd: winget.exe configure --file "$(wslpath -w output/configuration.winget)"
+
+  winget:test:
+    desc: Test WinGet configuration on Windows host
+    dir: config/winget
+    cmd: winget.exe configure test --file "$(wslpath -w output/configuration.winget)"
+
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
