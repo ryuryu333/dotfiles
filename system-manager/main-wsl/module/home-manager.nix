@@ -13,8 +13,8 @@
     };
     users.${user} = {
       imports = [
-        ../../home-manager
-        ../../home-manager/wsl
+        ../../../home-manager
+        ../../../home-manager/wsl
       ];
     };
   };

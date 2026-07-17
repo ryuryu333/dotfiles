@@ -65,7 +65,7 @@
             inherit nix-versions;
           };
           modules = [
-            ./system-manager
+            ./system-manager/main-wsl
             home-manager.nixosModules.home-manager
           ];
         };
