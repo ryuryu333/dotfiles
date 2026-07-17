@@ -48,7 +48,8 @@
           system-manager
           nix-darwin
           nix-homebrew
-          nix-versions;
+          nix-versions
+          ;
       };
     in
     {
@@ -57,7 +58,8 @@
         systemConfigs
         darwinConfigurations
         checks
-        apps;
+        apps
+        ;
     }
     // flake-utils.lib.eachSystem supportSystems (
       system:

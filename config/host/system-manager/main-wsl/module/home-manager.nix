@@ -10,7 +10,12 @@
     useGlobalPkgs = true;
     useUserPackages = false;
     extraSpecialArgs = {
-      inherit modulePaths nix-versions user home;
+      inherit
+        modulePaths
+        nix-versions
+        user
+        home
+        ;
     };
     users.${user} = {
       imports = [
