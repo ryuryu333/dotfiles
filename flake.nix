@@ -42,7 +42,7 @@
       ];
       modulePaths = {
         appConfig = ./app-config;
-        homeManager = ./home-manager;
+        homeManager = ./user/home-manager;
       };
       my_pc = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
@@ -69,7 +69,7 @@
             inherit modulePaths nix-versions;
           };
           modules = [
-            ./system-manager/main-wsl
+            ./host/system-manager/main-wsl
             home-manager.nixosModules.home-manager
           ];
         };
@@ -83,7 +83,7 @@
             inherit (my_pc.mac) user hostPlatform home;
           };
           modules = [
-            ./nix-darwin/main-mac
+            ./host/nix-darwin/main-mac
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
           ];
