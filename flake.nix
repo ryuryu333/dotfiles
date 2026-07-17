@@ -48,8 +48,7 @@
           system-manager
           nix-darwin
           nix-homebrew
-          nix-versions
-          ;
+          nix-versions;
       };
     in
     {
