@@ -59,8 +59,20 @@
         darwinConfigurations
         checks
         apps;
+    }
+    // flake-utils.lib.eachSystem supportSystems (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        formatter = pkgs.nixfmt-tree;
 
-      formatter =
-        flake-utils.lib.eachSystemMap supportSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
-    };
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            go-task
+          ];
+        };
+      }
+    );
 }
