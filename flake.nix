@@ -86,19 +86,16 @@
         };
       };
 
-      apps.x86_64-linux.system_manager =
-        let
-          sm_pkg = system-manager.packages.x86_64-linux.default;
-          sm_bin = nixpkgs.lib.getExe' sm_pkg "system-manager";
-        in
-        {
-          type = "app";
-          program = sm_bin;
-        };
+      checks = import ./flake/checks.nix {
+        inherit self;
+      };
 
-      checks = import ./flake/checks.nix { inherit self; };
-    }
-    // import ./flake/formatter.nix {
-      inherit nixpkgs flake-utils supportSystems;
+      apps = import ./flake/apps.nix {
+        inherit nixpkgs system-manager;
+      };
+
+      formatter = import ./flake/formatter.nix {
+        inherit nixpkgs flake-utils supportSystems;
+      };
     };
 }

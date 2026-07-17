@@ -9,7 +9,7 @@
     useGlobalPkgs = true;
     useUserPackages = false;
     extraSpecialArgs = {
-        inherit nix-versions user home;
+      inherit nix-versions user home;
     };
     users.${user} = {
       imports = [
