@@ -38,6 +38,11 @@ tasks:
     cmds:
       - cmd: nix fmt
 
+  winget:build:
+    desc: Build WinGet configuration
+    dir: config/winget
+    cmd: nickel export --format yaml --output output/configuration.winget main.ncl
+
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
