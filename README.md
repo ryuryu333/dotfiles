@@ -3,7 +3,7 @@
 
 
 # 対象マシン
-- WSL Ubuntu
+- Windows11 WSL2 Ubuntu 22.04 LTS
 - MacBookProM1
 
 
