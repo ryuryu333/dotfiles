@@ -58,28 +58,15 @@
       };
     in
     {
-      systemConfigs.default = system-manager.lib.makeSystemConfig {
-        specialArgs = {
-          inherit (my_pc.wsl) user hostPlatform home;
-          inherit nix-versions;
-        };
-        modules = [
-          ./system-manager
-          home-manager.nixosModules.home-manager
-        ];
-      };
-
-      homeConfigurations = {
-        # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-        "${my_pc.wsl.user}@${my_pc.wsl.hostname}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${my_pc.wsl.hostPlatform};
-          extraSpecialArgs = {
-            inherit (my_pc.wsl) user;
+      systemConfigs = {
+        main_wsl = system-manager.lib.makeSystemConfig {
+          specialArgs = {
+            inherit (my_pc.wsl) user hostPlatform home;
             inherit nix-versions;
           };
           modules = [
-            ./home-manager
-            ./home-manager/wsl
+            ./system-manager
+            home-manager.nixosModules.home-manager
           ];
         };
       };
