@@ -1,6 +1,7 @@
 {
   user,
   home,
+  modulePaths,
   nix-versions,
   ...
 }:
@@ -9,12 +10,12 @@
     useGlobalPkgs = true;
     useUserPackages = false;
     extraSpecialArgs = {
-      inherit nix-versions user home;
+      inherit modulePaths nix-versions user home;
     };
     users.${user} = {
       imports = [
-        ../../../home-manager
-        ../../../home-manager/wsl
+        modulePaths.homeManager
+        (modulePaths.homeManager + /wsl)
       ];
     };
   };

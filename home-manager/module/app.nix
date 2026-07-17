@@ -1,4 +1,9 @@
-{ pkgs, nix-versions, ... }:
+{
+  pkgs,
+  modulePaths,
+  nix-versions,
+  ...
+}:
 {
   home.packages =
     with pkgs;
@@ -13,6 +18,6 @@
     ];
 
   imports = [
-    ../../app-config
+    modulePaths.appConfig
   ];
 }

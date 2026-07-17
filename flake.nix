@@ -40,6 +40,10 @@
         x86_64-linux
         aarch64-darwin
       ];
+      modulePaths = {
+        appConfig = ./app-config;
+        homeManager = ./home-manager;
+      };
       my_pc = {
         # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
         wsl = {
@@ -62,7 +66,7 @@
         main_wsl = system-manager.lib.makeSystemConfig {
           specialArgs = {
             inherit (my_pc.wsl) user hostPlatform home;
-            inherit nix-versions;
+            inherit modulePaths nix-versions;
           };
           modules = [
             ./system-manager/main-wsl
@@ -75,7 +79,7 @@
         # MacBook Pro M1
         "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
           specialArgs = {
-            inherit self nix-versions;
+            inherit self modulePaths nix-versions;
             inherit (my_pc.mac) user hostPlatform home;
           };
           modules = [
