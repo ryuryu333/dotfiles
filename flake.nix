@@ -40,55 +40,22 @@
         x86_64-linux
         aarch64-darwin
       ];
-      modulePaths = {
-        appConfig = ./config/app;
-        homeManager = ./config/user/home-manager;
-      };
-      my_pc = {
-        # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-        wsl = {
-          hostPlatform = "x86_64-linux";
-          user = "ryu";
-          hostname = "main";
-          home = "/home/ryu";
-        };
-        # MacBook Pro M1
-        mac = {
-          hostPlatform = "aarch64-darwin";
-          user = "ryu";
-          hostname = "MacBook"; # home-manger 単独の時：MacBook.local
-          home = "/Users/ryu";
-        };
+      configurations = import ./config {
+        inherit
+          self
+          home-manager
+          system-manager
+          nix-darwin
+          nix-homebrew
+          nix-versions
+          ;
       };
     in
     {
-      systemConfigs = {
-        main_wsl = system-manager.lib.makeSystemConfig {
-          specialArgs = {
-            inherit (my_pc.wsl) user hostPlatform home;
-            inherit modulePaths nix-versions;
-          };
-          modules = [
-            ./config/host/system-manager/main-wsl
-            home-manager.nixosModules.home-manager
-          ];
-        };
-      };
-
-      darwinConfigurations = {
-        # MacBook Pro M1
-        "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
-          specialArgs = {
-            inherit self modulePaths nix-versions;
-            inherit (my_pc.mac) user hostPlatform home;
-          };
-          modules = [
-            ./config/host/nix-darwin/main-mac
-            home-manager.darwinModules.home-manager
-            nix-homebrew.darwinModules.nix-homebrew
-          ];
-        };
-      };
+      # WSL 環境管理
+      systemConfigs = configurations.systemConfigs;
+      # Mac 環境管理
+      darwinConfigurations = configurations.darwinConfigurations;
 
       checks = import ./flake/checks.nix {
         inherit self;
