@@ -2,6 +2,10 @@
 {
   home.username = user;
   home.homeDirectory = "/home/${user}";
+  
+  home.sessionVariables = {
+    DOCKER_HOST = "unix:///run/user/1000/docker.sock";
+  };
 
   # 将来的には system manager で起動シェルを zsh にしたい
   home.file.".profile".text = ''
