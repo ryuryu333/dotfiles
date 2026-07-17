@@ -43,6 +43,7 @@
       configurations = import ./config {
         inherit
           self
+          nixpkgs
           home-manager
           system-manager
           nix-darwin
@@ -52,21 +53,14 @@
       };
     in
     {
-      # WSL 環境管理
-      systemConfigs = configurations.systemConfigs;
-      # Mac 環境管理
-      darwinConfigurations = configurations.darwinConfigurations;
+      # WSL/Mac の環境構築
+      inherit (configurations)
+        systemConfigs
+        darwinConfigurations
+        checks
+        apps;
 
-      checks = import ./flake/checks.nix {
-        inherit self;
-      };
-
-      apps = import ./flake/apps.nix {
-        inherit nixpkgs system-manager;
-      };
-
-      formatter = import ./flake/formatter.nix {
-        inherit nixpkgs flake-utils supportSystems;
-      };
+      formatter =
+        flake-utils.lib.eachSystemMap supportSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
     };
 }
