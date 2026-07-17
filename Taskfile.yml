@@ -43,6 +43,11 @@ tasks:
     dir: config/winget
     cmd: nickel export --format yaml --output output/configuration.winget main.ncl
 
+  winget:fmt:
+    desc: Format WinGet Nickel files
+    dir: config/winget
+    cmd: nickel format main.ncl data/*.ncl lib/*.ncl
+
   winget:apply:
     desc: Apply WinGet configuration on Windows host
     dir: config/winget
