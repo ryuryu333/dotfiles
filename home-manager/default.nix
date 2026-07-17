@@ -2,6 +2,8 @@
   config,
   pkgs,
   nix-versions,
+  user,
+  home,
   ...
 }:
 {

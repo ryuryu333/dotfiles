@@ -1,6 +1,7 @@
 {
   self,
   user,
+  home,
   hostPlatform,
   ...
 }:
@@ -13,7 +14,7 @@
 
   nix.enable = false;
 
-  users.users.${user}.home = "/Users/${user}";
+  users.users.${user}.home = home;
 
   programs.zsh.enable = true;
 }

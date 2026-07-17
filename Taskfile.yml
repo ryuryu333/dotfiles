@@ -8,10 +8,10 @@ tasks:
       - task: switch
 
   switch:
-    desc: Switch environment via home-manager and nix-darwin (only macOS)
+    desc: Switch environment
     platforms: [linux/amd64, darwin/arm64]
     cmds:
-      - cmd: home-manager switch --flake .
+      - cmd: nix run .#system_manager -- switch --flake .#main_wsl --sudo
         platforms: [linux/amd64]
       - cmd: sudo darwin-rebuild switch --flake .
         platforms: [darwin/arm64]
@@ -42,7 +42,7 @@ tasks:
     desc: First time setup for home-manager and nix-darwin (only macOS)
     platforms: [linux/amd64, darwin/arm64]
     cmds:
-      - cmd: nix run home-manager/master -- switch --flake .
+      - cmd: nix run .#system_manager -- switch --flake . --sudo
         platforms: [linux/amd64]
       - cmd: sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
         platforms: [darwin/arm64]

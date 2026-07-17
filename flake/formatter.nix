@@ -3,6 +3,4 @@
   flake-utils,
   supportSystems,
 }:
-flake-utils.lib.eachSystem supportSystems (system: {
-  formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-})
+flake-utils.lib.eachSystemMap supportSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree)
