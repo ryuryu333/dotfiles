@@ -1,6 +1,6 @@
 {
   description = "Dotfiles configuration";
-  
+
   nixConfig = {
     extra-substituters = [ "https://cache.numtide.com" ];
   };
@@ -53,7 +53,7 @@
           hostPlatform = "aarch64-darwin";
           user = "ryu";
           hostname = "MacBook"; # home-manger 単独の時：MacBook.local
-          # todo home = 
+          # todo home =
         };
       };
     in
