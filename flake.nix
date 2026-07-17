@@ -53,7 +53,7 @@
           hostPlatform = "aarch64-darwin";
           user = "ryu";
           hostname = "MacBook"; # home-manger 単独の時：MacBook.local
-          # todo home =
+          home = "/Users/ryu";
         };
       };
     in
@@ -76,7 +76,7 @@
         "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
           specialArgs = {
             inherit self nix-versions;
-            inherit (my_pc.mac) user hostPlatform;
+            inherit (my_pc.mac) user hostPlatform home;
           };
           modules = [
             ./nix-darwin/MacBookProM1
