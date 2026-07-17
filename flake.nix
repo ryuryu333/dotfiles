@@ -46,21 +46,27 @@
           hostPlatform = "x86_64-linux";
           user = "ryu";
           hostname = "main";
+          home = "/home/ryu";
         };
         # MacBook Pro M1
         mac = {
           hostPlatform = "aarch64-darwin";
           user = "ryu";
           hostname = "MacBook"; # home-manger 単独の時：MacBook.local
+          # todo home = 
         };
       };
     in
     {
       systemConfigs.default = system-manager.lib.makeSystemConfig {
         specialArgs = {
-          inherit (my_pc.wsl) hostPlatform;
+          inherit (my_pc.wsl) user hostPlatform home;
+          inherit nix-versions;
         };
-        modules = [ ./system-manager ];
+        modules = [
+          ./system-manager
+          home-manager.nixosModules.home-manager
+        ];
       };
 
       homeConfigurations = {

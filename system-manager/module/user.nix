@@ -1,13 +1,17 @@
-{ pkgs, ... }:
+{ pkgs,
+  user,
+  home,
+  ...
+}:
 {
-  users.groups.ryu.gid = 1000;
+  users.groups.${user}.gid = 1000;
 
-  users.users.ryu = {
+  users.users.${user} = {
     uid = 1000;
     isNormalUser = true;
-    group = "ryu";
-    home = "/home/ryu";
-    createHome = false;
+    group = user;
+    inherit home;
+    createHome = false; # WSL により作成済み想定
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
