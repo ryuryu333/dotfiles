@@ -1,11 +1,19 @@
 {
   description = "Dotfiles configuration";
 
+  nixConfig = {
+    extra-substituters = [ "https://cache.numtide.com" ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    system-manager = {
+      url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
@@ -22,6 +30,7 @@
       nixpkgs,
       flake-utils,
       home-manager,
+      system-manager,
       nix-darwin,
       nix-homebrew,
       nix-versions,
@@ -37,27 +46,27 @@
           hostPlatform = "x86_64-linux";
           user = "ryu";
           hostname = "main";
+          home = "/home/ryu";
         };
         # MacBook Pro M1
         mac = {
           hostPlatform = "aarch64-darwin";
           user = "ryu";
           hostname = "MacBook"; # home-manger 単独の時：MacBook.local
+          home = "/Users/ryu";
         };
       };
     in
     {
-      homeConfigurations = {
-        # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)
-        "${my_pc.wsl.user}@${my_pc.wsl.hostname}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${my_pc.wsl.hostPlatform};
-          extraSpecialArgs = {
-            inherit (my_pc.wsl) user;
+      systemConfigs = {
+        main_wsl = system-manager.lib.makeSystemConfig {
+          specialArgs = {
+            inherit (my_pc.wsl) user hostPlatform home;
             inherit nix-versions;
           };
           modules = [
-            ./home-manager
-            ./home-manager/wsl
+            ./system-manager
+            home-manager.nixosModules.home-manager
           ];
         };
       };
@@ -67,7 +76,7 @@
         "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
           specialArgs = {
             inherit self nix-versions;
-            inherit (my_pc.mac) user hostPlatform;
+            inherit (my_pc.mac) user hostPlatform home;
           };
           modules = [
             ./nix-darwin/MacBookProM1
@@ -77,9 +86,16 @@
         };
       };
 
-      checks = import ./flake/checks.nix { inherit self; };
-    }
-    // import ./flake/formatter.nix {
-      inherit nixpkgs flake-utils supportSystems;
+      checks = import ./flake/checks.nix {
+        inherit self;
+      };
+
+      apps = import ./flake/apps.nix {
+        inherit nixpkgs system-manager;
+      };
+
+      formatter = import ./flake/formatter.nix {
+        inherit nixpkgs flake-utils supportSystems;
+      };
     };
 }
