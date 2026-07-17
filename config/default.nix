@@ -1,5 +1,6 @@
 {
   self,
+  nixpkgs,
   home-manager,
   system-manager,
   nix-darwin,
@@ -55,5 +56,22 @@ in
         nix-homebrew.darwinModules.nix-homebrew
       ];
     };
+  };
+
+  checks = {
+    x86_64-linux.wsl = self.systemConfigs.main_wsl;
+    aarch64-darwin.mac = self.darwinConfigurations.MacBook.system;
+  };
+
+  apps = {
+    x86_64-linux.system_manager =
+      let
+        sm_pkg = system-manager.packages.x86_64-linux.default;
+        sm_bin = nixpkgs.lib.getExe' sm_pkg "system-manager";
+      in
+      {
+        type = "app";
+        program = sm_bin;
+      };
   };
 }
