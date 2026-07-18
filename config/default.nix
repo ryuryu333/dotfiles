@@ -6,11 +6,13 @@
   nix-darwin,
   nix-homebrew,
   nix-versions,
+  module,
 }:
 let
   modulePaths = {
     appConfig = ./app;
     homeManager = ./user/home-manager;
+    gitEmail = module;
   };
   my_pc = {
     # Main desktop PC, Windows 11, WSL (Ubuntu 22.04.5 LTS)

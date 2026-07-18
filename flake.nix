@@ -6,6 +6,7 @@
   };
 
   inputs = {
+    dotfiles-private.url = "git+ssh://git@github.com/ryuryu333/dotfiles-private.git";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -27,6 +28,7 @@
   outputs =
     {
       self,
+      dotfiles-private,
       nixpkgs,
       flake-utils,
       home-manager,
@@ -50,6 +52,7 @@
           nix-homebrew
           nix-versions
           ;
+        module = dotfiles-private.homeManagerModules.git-email;
       };
     in
     {
@@ -74,7 +77,8 @@
             go-task
             nickel
             gawk
-            bats.withLibraries (p: [
+            bats.withLibraries
+            (p: [
               p.bats-assert
               p.bats-support
             ])

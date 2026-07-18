@@ -1,6 +1,7 @@
+{ modulePaths, ... }:
 {
   imports = [
     ./base.nix
-    ./secret.nix
+    modulePaths.gitEmail
   ];
 }
