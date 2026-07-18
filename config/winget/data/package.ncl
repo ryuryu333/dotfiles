@@ -1,5 +1,7 @@
+let { PackageUserInputSchema, .. } = import "../schema/package.ncl",
+in
 {
-  packages | { _ : String } = {
+  packages | PackageUserInputSchema = {
     git = "Git.Git",
     vscode = "Microsoft.VisualStudioCode",
   },

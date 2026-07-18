@@ -21,4 +21,10 @@ in
         | default = useLatest,
     },
   },
+
+  PackageUserInputSchema = {
+    _
+    | doc "WinGet pacakage ID. e.g. Microsoft.VisualStudioCode"
+    | String,
+  },
 }
