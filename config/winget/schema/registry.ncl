@@ -1,8 +1,9 @@
 let
+  { ResourceSchema = resource_schema, .. } = import "resource.ncl",
   type = "Microsoft.Windows/Registry",
 in
 {
-  RegistryResourceSchema = {
+  RegistryResourceSchema = resource_schema & {
     type
       | std.contract.Equal type
       | default = type,
