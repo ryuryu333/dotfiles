@@ -73,6 +73,7 @@
           packages = with pkgs; [
             go-task
             nickel
+            gawk
             bats.withLibraries (p: [
               p.bats-assert
               p.bats-support
