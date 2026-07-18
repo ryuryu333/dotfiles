@@ -1,5 +1,5 @@
 let
-  { ResourceSchema = resource_schema, .. } = import "resource.ncl",
+  { ResourceSchema, .. } = import "resource.ncl",
   schema = "https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json",
   identifier = "dscv3",
 in
@@ -14,6 +14,6 @@ in
       | default
       = identifier,
     resources
-      | Array resource_schema,
+      | Array ResourceSchema,
   },
 }
