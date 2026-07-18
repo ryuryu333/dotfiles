@@ -6,6 +6,7 @@ result_directory="result"
 result_file="${result_directory}/test-result-$(date '+%Y%m%d-%H%M%S').txt"
 
 mkdir -p "${result_directory}"
+find "${result_directory}" -mindepth 1 -delete
 
 tee "${result_file}"
 
