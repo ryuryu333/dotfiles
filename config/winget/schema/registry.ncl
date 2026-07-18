@@ -3,25 +3,30 @@ let
   reg_type = "Microsoft.Windows/Registry",
 in
 {
-  RegistryResourceSchema = resource_schema & {
-    type
-      | std.contract.Equal reg_type
-      | default = reg_type,
-    name
-      | String,
-    properties | {
-      keyPath
+  RegistryResourceSchema =
+    resource_schema
+    & {
+      type
+        | std.contract.Equal reg_type
+        | default
+        = reg_type,
+      name
         | String,
-      valueName
-        | String,
-      valueData
-        | Dyn,
+      properties
+        | {
+          keyPath
+            | String,
+          valueName
+            | String,
+          valueData
+            | Dyn,
+        },
     },
-  },
 
   HKCURegistryUserInputSchema
     | doc "Registry name, type & value. e.g. AppsUseLightTheme.DWord = 0"
-    = {
-      _ : { _ : Dyn }
-    },
+    =
+      {
+        _ : { _ : Dyn }
+      },
 }
