@@ -1,0 +1,37 @@
+Microsoft.Windows/Registry [AppsUseLightTheme]
+  Manage Windows Registry keys and values
+  設定:
+    valueData:
+      DWord: 0
+    valueName: AppsUseLightTheme
+    keyPath: HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize
+Microsoft.Windows/Registry [SystemUsesLightTheme]
+  Manage Windows Registry keys and values
+  設定:
+    valueData:
+      DWord: 0
+    valueName: SystemUsesLightTheme
+    keyPath: HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize
+Microsoft.WinGet/Package [git]
+  Allows management of package state via the DSC v3 command line interface protocol. See the help link for details.
+  設定:
+    id: Git.Git
+    source: winget
+    useLatest: true
+Microsoft.WinGet/Package [vscode]
+  Allows management of package state via the DSC v3 command line interface protocol. See the help link for details.
+  設定:
+    id: Microsoft.VisualStudioCode
+    source: winget
+    useLatest: true
+実行を選択した構成設定について理解する責任はお客様にあります。お客様が作成またはインポートした構成ファイルについて、Microsoft は責任を負いません。この構成により、Windows の設定の変更、ソフトウェアのインストール、ソフトウェアの設定の変更 (セキュリティ設定を含む) が行われることや、サードパーティのパッケージとサービスに対するユーザー同意事項についてお客様の代理としての承諾が行われることがあります。この構成ファイルを実行することは、これらのリソースと設定を理解して同意したことの確認となります。インストールされるアプリケーションがある場合、それぞれの所有者からライセンスが付与されます。サードパーティのパッケージまたはサービスについて Microsoft は責任を負わず、ライセンスを付与することもありません。
+構成を確認してから、システムに対する検証を続行しますか?
+[Y] はい  [N] いいえ: Microsoft.Windows/Registry [AppsUseLightTheme]
+  システムは記述された構成状態です。
+Microsoft.Windows/Registry [SystemUsesLightTheme]
+  システムは記述された構成状態です。
+Microsoft.WinGet/Package [git]
+  システムは、記述された構成状態ではありません。
+Microsoft.WinGet/Package [vscode]
+  システムは記述された構成状態です。
+システムは、記述された構成状態ではありません。
