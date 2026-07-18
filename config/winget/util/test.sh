@@ -10,3 +10,33 @@ mkdir -p "${result_directory}"
 winget.exe configure test \
   --file "$(wslpath -w output/configuration.winget)" \
   2>&1 | tee "${result_file}"
+test_status=${PIPESTATUS[0]}
+
+awk '
+  {
+    gsub(/\r/, "")
+    normalized_line = $0
+    sub(/^[[:space:]]+/, "", normalized_line)
+  }
+  normalized_line == "システムは、記述された構成状態ではありません。" &&
+    previous_non_empty_line ~ /^Microsoft\.[^ ]+ \[[^]]+\]$/ {
+    failed_resources[++failed_resource_count] = previous_non_empty_line
+  }
+  $0 != "" {
+    previous_non_empty_line = $0
+  }
+  END {
+    print "====="
+    print "不適合なリソース"
+    if (failed_resource_count == 0) {
+      print "なし"
+    } else {
+      for (resource_index = 1; resource_index <= failed_resource_count; resource_index++) {
+        print failed_resources[resource_index]
+      }
+    }
+    print "====="
+  }
+' "${result_file}" | tee -a "${result_file}"
+
+exit "${test_status}"
