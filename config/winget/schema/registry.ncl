@@ -18,12 +18,9 @@ in
     },
   },
 
-  HKCURegistryUserInputSchema = {
-    _ | {
-      _
-      | doc "Registry type & value e.g. DWord = 0"
-      | Dyn,
-    }
-    | doc "Registry name e.g. AppsUseLightTheme"
-  },
+  HKCURegistryUserInputSchema
+    | doc "Registry name, type & value. e.g. AppsUseLightTheme.DWord = 0"
+    = {
+      _ : { _ : Dyn }
+    },
 }
