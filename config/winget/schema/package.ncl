@@ -22,9 +22,9 @@ in
     },
   },
 
-  PackageUserInputSchema = {
-    _
-    | doc "WinGet pacakage ID. e.g. Microsoft.VisualStudioCode"
-    | String,
-  },
+  PackageUserInputSchema
+    | doc "WinGet package ID. e.g. Microsoft.VisualStudioCode"
+    = {
+      _ : String
+    },
 }
