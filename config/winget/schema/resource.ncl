@@ -1,10 +1,10 @@
 let
-  { PackageResourceSchema, .. } = import "package.ncl",
-  { RegistryResourceSchema, .. } = import "registry.ncl",
+  { PackageResourceSchema = package_resource_schema, .. } = import "package.ncl",
+  { RegistryResourceSchema = registry_resource_schema, .. } = import "registry.ncl",
 in
 {
   ResourceSchema = std.contract.any_of [
-    PackageResourceSchema,
-    RegistryResourceSchema,
+    package_resource_schema,
+    registry_resource_schema,
   ],
 }
