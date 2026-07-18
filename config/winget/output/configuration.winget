@@ -31,15 +31,15 @@ resources:
     source: winget
     useLatest: true
   type: Microsoft.WinGet/Package
-- name: java
-  properties:
-    id: Oracle.JavaRuntimeEnvironment
-    source: winget
-    useLatest: true
-  type: Microsoft.WinGet/Package
 - name: powershell
   properties:
     id: Microsoft.PowerShell
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: powertoys
+  properties:
+    id: Microsoft.PowerToys
     source: winget
     useLatest: true
   type: Microsoft.WinGet/Package

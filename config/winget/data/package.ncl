@@ -4,8 +4,8 @@ in
   packages | PackageUserInputSchema = {
     chrome = "Google.Chrome.EXE",
     git = "Git.Git",
-    java = "Oracle.JavaRuntimeEnvironment",
     powershell = "Microsoft.PowerShell",
+    powertoys = "Microsoft.PowerToys",
     seven_zip = "7zip.7zip",
     unity_hub = "Unity.UnityHub",
     visual_studio = "Microsoft.VisualStudio.Community",
