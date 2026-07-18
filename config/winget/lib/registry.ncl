@@ -11,12 +11,12 @@ in
     | hkcu_registry_user_input_schema -> { _ : registry_resource_schema }
     = fun registries =>
       registries
-      |> std.record.map (fun resource_name value_data =>
+      |> std.record.map (fun field_name value_data =>
         {
-          name = resource_name,
+          name = field_name,
           properties = {
             keyPath = key_path,
-            valueName = resource_name,
+            valueName = field_name,
             valueData = value_data,
           },
         }
