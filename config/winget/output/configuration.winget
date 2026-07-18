@@ -1,0 +1,69 @@
+---
+$schema: https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+metadata:
+  winget:
+    processor:
+      identifier: dscv3
+resources:
+- name: AppsUseLightTheme
+  properties:
+    keyPath: HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize
+    valueData:
+      DWord: 0
+    valueName: AppsUseLightTheme
+  type: Microsoft.Windows/Registry
+- name: SystemUsesLightTheme
+  properties:
+    keyPath: HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize
+    valueData:
+      DWord: 0
+    valueName: SystemUsesLightTheme
+  type: Microsoft.Windows/Registry
+- name: chrome
+  properties:
+    id: Google.Chrome.EXE
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: git
+  properties:
+    id: Git.Git
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: powershell
+  properties:
+    id: Microsoft.PowerShell
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: powertoys
+  properties:
+    id: Microsoft.PowerToys
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: seven_zip
+  properties:
+    id: 7zip.7zip
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: unity_hub
+  properties:
+    id: Unity.UnityHub
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: visual_studio
+  properties:
+    id: Microsoft.VisualStudio.Community
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: vscode
+  properties:
+    id: Microsoft.VisualStudioCode
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
