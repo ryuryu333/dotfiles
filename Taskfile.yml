@@ -51,7 +51,7 @@ tasks:
   winget:fmt:
     desc: Format WinGet Nickel files
     dir: config/winget
-    cmd: nickel format main.ncl data/*.ncl lib/*.ncl
+    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
 
   winget:apply:
     desc: Apply WinGet configuration on Windows host
