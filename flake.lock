@@ -40,11 +40,11 @@
     },
     "dotfiles-private": {
       "locked": {
-        "lastModified": 1784389762,
-        "narHash": "sha256-a5GdUM3zksBuaL0lnz1Pz1vTro4Yhq8UC8e4ff4E8Sc=",
+        "lastModified": 1784392192,
+        "narHash": "sha256-Bb5RoYUdMO+OUAfHHcYpi3O2YXWo6ZFuQ1IfjkJHT/g=",
         "ref": "refs/heads/main",
-        "rev": "5e854f84123b51f30bc422b56b8c58bedc80ea9a",
-        "revCount": 2,
+        "rev": "42fd88c0336c8b9c1a8e19a99cd03183aea420bf",
+        "revCount": 3,
         "type": "git",
         "url": "ssh://git@github.com/ryuryu333/dotfiles-private.git"
       },
