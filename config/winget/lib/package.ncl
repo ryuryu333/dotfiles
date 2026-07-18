@@ -9,10 +9,10 @@ in
     | package_user_input_schema -> { _ : package_resource_schema }
     = fun packages =>
       packages
-      |> std.record.map (fun resource_name id =>
+      |> std.record.map (fun field_name package_id =>
         {
-          name = resource_name,
-          properties.id = id,
+          name = field_name,
+          properties.id = package_id,
         }
       ),
 }
