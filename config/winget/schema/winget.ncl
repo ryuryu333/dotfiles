@@ -1,13 +1,17 @@
-let { PackageResourceSchema } = import "package.ncl" in
+let
+  { ResourceSchema, ... } = import "resource.ncl",
+  schema = "https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json",
+  identifier = "dscv3",
+in
 {
   WinGetSchema = {
     "$schema"
-      | String,
-      | default = "https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json",
+      | std.contract.Equal schema
+      | default = schema,
     metadata.winget.processor.identifier
-      | String,
-      | default = dscv3,
+      | std.contract.Equal identifier
+      | default = identifier,
     resources
-      | Array PackageResourceSchema
+      | Array ResourceSchema,
   },
 }

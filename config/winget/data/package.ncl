@@ -1,4 +1,6 @@
-[
-  "Git.Git",
-  "Task.Task",
-]
+{
+  packages | { _ : String } = {
+    git = "Git.Git",
+    vscode = "Microsoft.VisualStudioCode",
+  },
+}
