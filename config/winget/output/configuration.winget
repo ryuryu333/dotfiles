@@ -5,18 +5,6 @@ metadata:
     processor:
       identifier: dscv3
 resources:
-- name: git
-  properties:
-    id: Git.Git
-    source: winget
-    useLatest: true
-  type: Microsoft.WinGet/Package
-- name: vscode
-  properties:
-    id: Microsoft.VisualStudioCode
-    source: winget
-    useLatest: true
-  type: Microsoft.WinGet/Package
 - name: AppsUseLightTheme
   properties:
     keyPath: HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize
@@ -31,3 +19,15 @@ resources:
       DWord: 0
     valueName: SystemUsesLightTheme
   type: Microsoft.Windows/Registry
+- name: git
+  properties:
+    id: Git.Git
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: vscode
+  properties:
+    id: Microsoft.VisualStudioCode
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package

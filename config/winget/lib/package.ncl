@@ -6,14 +6,13 @@ let {
 in
 {
   to_resources
-    | package_user_input_schema -> Array package_resource_schema
+    | package_user_input_schema -> { _ : package_resource_schema }
     = fun packages =>
       packages
-      |> std.record.to_array
-      |> std.array.map (fun package =>
+      |> std.record.map (fun resource_name id =>
         {
-          name = package.field,
-          properties.id = package.value,
+          name = resource_name,
+          properties.id = id,
         }
       ),
 }

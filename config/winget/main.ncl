@@ -9,11 +9,10 @@ in
 let integrated_resources
   | Array resource_schema.ResourceSchema
   =
-    [
-      package_data.packages |> package_lib.to_resources,
-      registry_data.registries |> registry_lib.to_resources,
-    ]
-    |> std.array.flatten,
+    (package_data.packages |> package_lib.to_resources)
+    & (registry_data.registries |> registry_lib.to_resources)
+    |> std.record.to_array
+    |> std.array.map (fun resource => resource.value),
 in
 let configuration
   | winget_schema.WinGetSchema

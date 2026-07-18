@@ -8,17 +8,16 @@ let
 in
 {
   to_resources
-    | hkcu_registry_user_input_schema -> Array registry_resource_schema
+    | hkcu_registry_user_input_schema -> { _ : registry_resource_schema }
     = fun registries =>
       registries
-      |> std.record.to_array
-      |> std.array.map (fun registry =>
+      |> std.record.map (fun resource_name value_data =>
         {
-          name = registry.field,
+          name = resource_name,
           properties = {
             keyPath = key_path,
-            valueName = registry.field,
-            valueData = registry.value,
+            valueName = resource_name,
+            valueData = value_data,
           },
         }
       ),
