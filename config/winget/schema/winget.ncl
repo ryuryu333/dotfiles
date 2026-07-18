@@ -7,10 +7,12 @@ in
   WinGetSchema = {
     "$schema"
       | std.contract.Equal schema
-      | default = schema,
+      | default
+      = schema,
     metadata.winget.processor.identifier
       | std.contract.Equal identifier
-      | default = identifier,
+      | default
+      = identifier,
     resources
       | Array resource_schema,
   },
