@@ -7,10 +7,7 @@ result_file="${result_directory}/test-result-$(date '+%Y%m%d-%H%M%S').txt"
 
 mkdir -p "${result_directory}"
 
-winget.exe configure test \
-  --file "$(wslpath -w output/configuration.winget)" \
-  2>&1 | tee "${result_file}"
-test_status=${PIPESTATUS[0]}
+tee "${result_file}"
 
 awk '
   {
@@ -38,5 +35,3 @@ awk '
     print "====="
   }
 ' "${result_file}" | tee -a "${result_file}"
-
-exit "${test_status}"
