@@ -5,3 +5,5 @@
 result
 .direnv
 
+# WinGet
+/config/app/git/win/.gitconfig
