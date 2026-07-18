@@ -61,7 +61,7 @@ tasks:
   winget:test:
     desc: Test WinGet configuration on Windows host
     dir: config/winget
-    cmd: winget.exe configure test --file "$(wslpath -w output/configuration.winget)"
+    cmd: bash util/test.sh
 
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
