@@ -43,6 +43,11 @@ tasks:
     dir: config/winget
     cmd: nickel export --format yaml --output output/configuration.winget main.ncl
 
+  winget:validate:
+    desc: Validate WinGet configuration
+    dir: config/winget
+    cmd: winget.exe configure validate --file "$(wslpath -w output/configuration.winget)"
+
   winget:fmt:
     desc: Format WinGet Nickel files
     dir: config/winget
