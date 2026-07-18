@@ -1,12 +1,12 @@
 let
-  { ResourceSchema = resource_schema, .. } = import "resource.ncl",
+  { ResourceSchema, .. } = import "resource.ncl",
   pkg_type = "Microsoft.WinGet/Package",
   pkg_source = "winget",
   pkg_use_latest = true,
 in
 {
   PackageResourceSchema =
-    resource_schema
+    ResourceSchema
     & {
       type
         | std.contract.Equal pkg_type

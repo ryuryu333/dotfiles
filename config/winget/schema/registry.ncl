@@ -1,10 +1,10 @@
 let
-  { ResourceSchema = resource_schema, .. } = import "resource.ncl",
+  { ResourceSchema, .. } = import "resource.ncl",
   reg_type = "Microsoft.Windows/Registry",
 in
 {
   RegistryResourceSchema =
-    resource_schema
+    ResourceSchema
     & {
       type
         | std.contract.Equal reg_type
