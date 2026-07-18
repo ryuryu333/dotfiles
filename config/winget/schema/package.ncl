@@ -1,20 +1,24 @@
+let
+  type = "Microsoft.WinGet/Package",
+  source = "winget",
+  useLatest = true,
+in
 {
   PackageResourceSchema = {
+    type
+      | std.contract.Equal type
+      | default = type,
     name
       | String,
-    properties = {
+    properties | {
       id
         | String,
       source
-        | String,
-        | default = winget,
+        | std.contract.Equal source
+        | default = source,
       useLatest
-        | Bool,
-        | default = true,
+        | std.contract.Equal useLatest
+        | default = useLatest,
     },
-    type
-      | String
-      | default
-      = Microsoft.WinGet / Package,
   },
 }
