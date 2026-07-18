@@ -1,25 +1,25 @@
 let
   { ResourceSchema = resource_schema, .. } = import "resource.ncl",
-  type = "Microsoft.WinGet/Package",
-  source = "winget",
-  useLatest = true,
+  pkg_type = "Microsoft.WinGet/Package",
+  pkg_source = "winget",
+  pkg_use_latest = true,
 in
 {
   PackageResourceSchema = resource_schema & {
     type
-      | std.contract.Equal type
-      | default = type,
+      | std.contract.Equal pkg_type
+      | default = pkg_type,
     name
       | String,
     properties | {
       id
         | String,
       source
-        | std.contract.Equal source
-        | default = source,
+        | std.contract.Equal pkg_source
+        | default = pkg_source,
       useLatest
-        | std.contract.Equal useLatest
-        | default = useLatest,
+        | std.contract.Equal pkg_use_latest
+        | default = pkg_use_latest,
     },
   },
 
