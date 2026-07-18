@@ -19,9 +19,45 @@ resources:
       DWord: 0
     valueName: SystemUsesLightTheme
   type: Microsoft.Windows/Registry
+- name: chrome
+  properties:
+    id: Google.Chrome.EXE
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
 - name: git
   properties:
     id: Git.Git
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: java
+  properties:
+    id: Oracle.JavaRuntimeEnvironment
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: powershell
+  properties:
+    id: Microsoft.PowerShell
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: seven_zip
+  properties:
+    id: 7zip.7zip
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: unity_hub
+  properties:
+    id: Unity.UnityHub
+    source: winget
+    useLatest: true
+  type: Microsoft.WinGet/Package
+- name: visual_studio
+  properties:
+    id: Microsoft.VisualStudio.Community
     source: winget
     useLatest: true
   type: Microsoft.WinGet/Package
