@@ -67,7 +67,14 @@
     // flake-utils.lib.eachSystem supportSystems (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+              "terraform"
+            ];
+        };
       in
       {
         formatter = pkgs.nixfmt-tree;
@@ -77,11 +84,14 @@
             go-task
             nickel
             gawk
-            bats.withLibraries
+            (bats.withLibraries
             (p: [
               p.bats-assert
               p.bats-support
-            ])
+            ]))
+            terraform
+            google-cloud-sdk
+            gh
           ];
         };
       }
