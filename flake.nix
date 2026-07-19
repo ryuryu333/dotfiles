@@ -79,20 +79,33 @@
       {
         formatter = pkgs.nixfmt-tree;
 
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            go-task
-            nickel
-            gawk
-            (bats.withLibraries
-            (p: [
-              p.bats-assert
-              p.bats-support
-            ]))
-            terraform
-            google-cloud-sdk
-            gh
-          ];
+        devShells = {
+          winget = pkgs.mkShell {
+            packages = with pkgs; [
+              go-task
+              nickel
+              gawk
+              (bats.withLibraries
+              (p: [
+                p.bats-assert
+                p.bats-support
+              ]))
+            ];
+          };
+          infra = pkgs.mkShell {
+            packages = with pkgs; [
+              go-task
+              terraform
+              google-cloud-sdk
+              gh
+            ];
+          };
+          default = pkgs.mkShell {
+            inputsFrom = [
+              self.devShells.${system}.winget
+              self.devShells.${system}.infra
+            ];
+          };
         };
       }
     );
