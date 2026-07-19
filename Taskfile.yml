@@ -73,6 +73,11 @@ tasks:
     dir: config/winget
     cmd: find . -type f -name '*.ncl' -exec nickel format {} +
 
+  tf:fmt:
+    desc: Format Terraform Nickel files
+    dir: infra/github
+    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
+
   winget:apply:
     desc: Apply WinGet configuration on Windows host
     dir: config/winget
