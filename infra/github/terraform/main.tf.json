@@ -1,0 +1,23 @@
+{
+  "provider": {
+    "github": {
+      "owner": "ryuryu333"
+    }
+  },
+  "resource": {
+    "github_repository": {
+      "my_test": {
+        "name": "my-test",
+        "private": true
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "github": {
+        "source": "integrations/github",
+        "version": "~> 6.0"
+      }
+    }
+  }
+}
