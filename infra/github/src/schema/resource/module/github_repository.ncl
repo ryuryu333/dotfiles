@@ -1,8 +1,13 @@
-let GithubRepositoryInputSchema = {},
-in
 {
-  GithubRepositorySchema =
-    {
-      _ : GithubRepositoryInputSchema
+  GithubRepositorySchema = {
+    _ : {
+    name | String,
+    description
+      | String
+      | optional,
+    private
+      | Bool
+      | default = true,
     },
+  },
 }
