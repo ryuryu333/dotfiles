@@ -6,7 +6,7 @@
   },
   "resource": {
     "github_repository": {
-      "my_test": {
+      "my-test": {
         "name": "my-test",
         "private": true
       }

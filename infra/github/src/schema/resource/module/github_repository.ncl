@@ -1,15 +1,17 @@
 {
+  GithubRepositoryInputSchema = {
+    description
+      | String
+      | optional,
+    private
+      | Bool
+      | default
+      = true,
+  },
+
   GithubRepositorySchema =
-    {
-      _ : {
-        name | String,
-        description
-          | String
-          | optional,
-        private
-          | Bool
-          | default
-          = true,
-      }
+    GithubRepositoryInputSchema
+    & {
+      name | String,
     },
 }

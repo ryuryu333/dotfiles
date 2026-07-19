@@ -1,6 +1,5 @@
 {
-  my_test = {
-    name = "my-test",
+  "my-test" = {
     private = true,
   },
 }

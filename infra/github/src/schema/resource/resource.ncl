@@ -1,7 +1,7 @@
-let { GithubRepositorySchema } = import "./module/github_repository.ncl",
+let { GithubRepositorySchema, .. } = import "./module/github_repository.ncl",
 in
 {
   ResourceSchema = {
-    github_repository | GithubRepositorySchema,
+    github_repository | { _ : GithubRepositorySchema },
   },
 }
