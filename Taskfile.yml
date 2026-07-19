@@ -35,23 +35,23 @@ tasks:
 
   infra:init:
     desc: Initialize Terraform for GCP
-    cmd: nix develop .#infra -c terraform -chdir=infra/gcp init
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp/projects init
 
   infra:fmt:
     desc: Check Terraform formatting for GCP
-    cmd: nix develop .#infra -c terraform -chdir=infra/gcp fmt -check
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp/projects fmt -check
 
   infra:validate:
     desc: Validate Terraform configuration for GCP
-    cmd: nix develop .#infra -c terraform -chdir=infra/gcp validate
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp/projects validate
 
   infra:plan:
     desc: Plan GCP infrastructure changes
-    cmd: nix develop .#infra -c terraform -chdir=infra/gcp plan
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp/projects plan -var-file=projects.tfvars
 
   infra:apply:
     desc: Apply GCP infrastructure changes
-    cmd: nix develop .#infra -c terraform -chdir=infra/gcp apply
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp/projects apply -var-file=projects.tfvars
 
   fmt:
     desc: Format nix files
