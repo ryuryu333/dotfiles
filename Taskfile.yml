@@ -33,6 +33,26 @@ tasks:
     desc: Run all check
     cmd: nix flake check --all-systems
 
+  infra:init:
+    desc: Initialize Terraform for GCP
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp init
+
+  infra:fmt:
+    desc: Check Terraform formatting for GCP
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp fmt -check
+
+  infra:validate:
+    desc: Validate Terraform configuration for GCP
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp validate
+
+  infra:plan:
+    desc: Plan GCP infrastructure changes
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp plan
+
+  infra:apply:
+    desc: Apply GCP infrastructure changes
+    cmd: nix develop .#infra -c terraform -chdir=infra/gcp apply
+
   fmt:
     desc: Format nix files
     cmds:
