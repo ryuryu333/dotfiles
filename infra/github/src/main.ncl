@@ -10,7 +10,9 @@ let configuration
   = {
     terraform.required_providers = required_providers,
     provider = provider_data,
-    resource.github_repository = repositories_data |> repository_lib.to_resources,
+    resource.github_repository =
+      repositories_data
+      |> repository_lib.to_resources,
   },
 in
 configuration
