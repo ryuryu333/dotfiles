@@ -78,6 +78,11 @@ tasks:
     dir: infra/github
     cmd: find . -type f -name '*.ncl' -exec nickel format {} +
 
+  tf:build:
+    desc: Build Terraform JSON for GitHub
+    dir: infra/github
+    cmd: nickel export --format json --output terraform/main.tf.json src/main.ncl
+
   winget:apply:
     desc: Apply WinGet configuration on Windows host
     dir: config/winget
