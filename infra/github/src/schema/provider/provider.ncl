@@ -1,5 +1,7 @@
 {
   ProviderSchema = {
-    owner | String,
+    _ : {
+      owner | String,
+    },
   },
 }

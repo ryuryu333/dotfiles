@@ -6,7 +6,7 @@ in
 {
   TfJsonSchema = {
     terraform | TerraformSchema,
-    provide | ProviderSchema,
+    provider | ProviderSchema,
     resource | ResourceSchema,
   },
 }
