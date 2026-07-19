@@ -1,6 +1,0 @@
-{
-    ProviderSchema = {
-        owner
-        | String,
-    },
-}
