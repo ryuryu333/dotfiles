@@ -1,8 +1,9 @@
-{
+# let import...
+# in
+let
   # NOTE
   # tag rule は GitHub Free だと public repository のみ
   # push rule は organization 用
-
   default_rules.branch = {
     all = {
       required_linear_history = true, # マージコミット禁止
@@ -23,7 +24,6 @@
     # 特定のブランチ
     # dev = {},
   },
-
   default_rules.tag = {
     # v が付くタグが対象
     "refs/tags/v*" = {
@@ -31,7 +31,8 @@
       update = true, # 更新不可
     },
   },
-
+in
+{
   # 宣言管理している repository のみが対象
   repository = {
     private.branch = default_rules.branch,
@@ -41,11 +42,27 @@
     },
     # 特定の repository
   },
-  all_private_repository.rule.branch = default_rules.branch,
-  all_public_repository = {
-    rule = {
-      branch = default_rules.branch,
-      tag = default_rules.tag,
-    },
-  },
 }
+  | {
+    repository | {
+      private | {
+        branch | BranchRulesSchema,
+        tag | TagRulesSchema,
+        push | PushRulesSchema,
+      },
+      public | {
+        branch | BranchRulesSchema,
+        tag | TagRulesSchema,
+        push | PushRulesSchema,
+      },
+      # e.g. my-test-repo
+      _ | {
+        branch | BranchRulesSchema,
+        tag | TagRulesSchema,
+        push | PushRulesSchema,
+      },
+    },
+    # for user 
+    _
+      | Dyn,
+  }
