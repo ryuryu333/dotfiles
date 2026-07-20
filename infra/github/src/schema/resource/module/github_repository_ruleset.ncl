@@ -2,29 +2,24 @@ let { SingleElementArray } = import "../../../util/contract.ncl",
 in
 {
   GithubRepositoryRulesetSchema = {
-    repository | String,
     name | String,
-    target
-      | [| 'branch, 'tag, 'push |],
+    repository | String,
     enforcement
-      | std.contract.Equal 'active
+      | [| 'active, 'disabled, 'evaluate |]
+      | doc "evaluate is currently only supported for owners of type organization."
       | default
       = 'active,
+    bypass_actors
+      | optional
+      | doc "Don't use, if needed, make schema.",
+    target
+      | [| 'branch, 'tag, 'push |],
     conditions
-      | Array {
-        ref_name
-          | Array {
-            "include" | Array String,
-            "exclude" | Array String,
-          }
-          | SingleElementArray,
-      }
-      | SingleElementArray,
+      | Array Dyn
+      | SingleElementArray
+      | optional,
     rules
-      | Array {
-        deletion | Bool,
-        non_fast_forward | Bool,
-      }
+      | Array Dyn
       | SingleElementArray,
   },
 }
