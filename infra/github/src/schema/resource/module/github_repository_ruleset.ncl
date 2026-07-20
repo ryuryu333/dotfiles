@@ -1,7 +1,8 @@
-let { SingleElementArray } = import "../../../util/contract.ncl",
+let
+  { SingleElementArray } = import "../../../util/contract.ncl",
 in
-{
-  GithubRepositoryRulesetSchema = {
+let
+  BaseSchema = {
     name | String,
     repository | String,
     enforcement
@@ -14,12 +15,25 @@ in
       | doc "Don't use, if needed, make schema.",
     target
       | [| 'branch, 'tag, 'push |],
-    conditions
-      | Array Dyn
-      | SingleElementArray
-      | optional,
     rules
       | Array Dyn
       | SingleElementArray,
   },
+in
+{
+  GithubRepositoryRulesetSchema = 
+    GithubRepositoryRulesetTagSchema
+    & GithubRepositoryRulesetBranchSchema
+    & GithubRepositoryRulesetPushSchema,
+  GithubRepositoryRulesetTagSchema =
+    BaseSchema
+    & {
+      target
+        | # tag のみ
+      conditions
+        | Array Dyn
+        | SingleElementArray,
+    },
+    # GithubRepositoryRulesetBranchSchema
+    # GithubRepositoryRulesetPushSchema
 }
