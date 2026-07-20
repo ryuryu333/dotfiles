@@ -1,4 +1,4 @@
-let { SingleElementArray } = import "../../../util/contract.ncl",
+let { SingleElementArray } = import "../../../../util/contract.ncl",
 in
 let BaseSchema = {
   name | String,
