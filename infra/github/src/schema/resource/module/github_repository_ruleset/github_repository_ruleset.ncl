@@ -1,4 +1,8 @@
-let contract_util = import "../../../../util/contract.ncl",
+let
+  contract_util = import "../../../../util/contract.ncl",
+  { BranchRulesSchema } = import "./module/branch_rule.ncl",
+  { PushRulesSchema } = import "./module/push_rule.ncl",
+  { TagRulesSchema } = import "./module/tag_rule.ncl",
 in
 let ConditionSchema = {
   ref_name
@@ -47,6 +51,9 @@ in
     BaseSchema
     & {
       target | std.contract.Equal 'tag,
+      rules
+        | Array TagRulesSchema
+        | contract_util.SingleElementArray,
       conditions
         | Array ConditionSchema
         | contract_util.SingleElementArray,
@@ -55,6 +62,9 @@ in
     BaseSchema
     & {
       target | std.contract.Equal 'branch,
+      rules
+        | Array BranchRulesSchema
+        | contract_util.SingleElementArray,
       conditions
         | Array ConditionSchema
         | contract_util.SingleElementArray,
@@ -63,5 +73,8 @@ in
     BaseSchema
     & {
       target | std.contract.Equal 'push,
+      rules
+        | Array PushRulesSchema
+        | contract_util.SingleElementArray,
     },
 }
