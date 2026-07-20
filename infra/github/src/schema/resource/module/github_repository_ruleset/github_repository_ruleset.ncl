@@ -1,4 +1,19 @@
-let { SingleElementArray } = import "../../../../util/contract.ncl",
+let contract_util = import "../../../../util/contract.ncl",
+in
+let ConditionSchema = {
+  ref_name
+    | Array {
+      "include"
+        | Array String
+        | default
+        = ["~ALL"],
+      exclude
+        | Array String
+        | default
+        = [],
+    }
+    | contract_util.SingleElementArray,
+},
 in
 let BaseSchema = {
   name | String,
@@ -16,7 +31,7 @@ let BaseSchema = {
     | [| 'branch, 'tag, 'push |],
   rules
     | Array Dyn
-    | SingleElementArray,
+    | contract_util.SingleElementArray,
 },
 in
 {
@@ -24,8 +39,8 @@ in
     BaseSchema
     & {
       conditions
-        | Array Dyn
-        | SingleElementArray
+        | Array ConditionSchema
+        | contract_util.SingleElementArray
         | optional
     },
   GithubRepositoryRulesetTagSchema =
@@ -33,16 +48,16 @@ in
     & {
       target | std.contract.Equal 'tag,
       conditions
-        | Array Dyn
-        | SingleElementArray,
+        | Array ConditionSchema
+        | contract_util.SingleElementArray,
     },
   GithubRepositoryRulesetBranchSchema =
     BaseSchema
     & {
       target | std.contract.Equal 'branch,
       conditions
-        | Array Dyn
-        | SingleElementArray,
+        | Array ConditionSchema
+        | contract_util.SingleElementArray,
     },
   GithubRepositoryRulesetPushSchema =
     BaseSchema

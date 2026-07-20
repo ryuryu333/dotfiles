@@ -1,6 +1,6 @@
 let
   { GithubRepositorySchema, .. } = import "./module/github_repository.ncl",
-  { GithubRepositoryRulesetSchema, .. } = import "./module/github_repository_ruleset.ncl",
+  { GithubRepositoryRulesetSchema, .. } = import "./module/github_repository_ruleset/github_repository_ruleset.ncl",
 in
 {
   ResourceSchema = {
