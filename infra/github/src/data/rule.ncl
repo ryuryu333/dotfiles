@@ -1,6 +1,6 @@
 {
   # NOTE
-  # tag rule は GitHub Free だと puclic repositry のみ
+  # tag rule は GitHub Free だと public repository のみ
   # push rule は organization 用
 
   default_rules.branch = {
@@ -32,22 +32,19 @@
     },
   },
 
-
-  # 宣言管理している repositry のみが対象
-  repositry = {
-    privaterule.branch = default_rules.brach,
+  # 宣言管理している repository のみが対象
+  repository = {
+    private.branch = default_rules.branch,
     public = {
-      branch = default_rules.brach,
+      branch = default_rules.branch,
       tag = default_rules.tag,
     },
-    # 特定の repositry
-    
-
+    # 特定の repository
   },
-  all_private_repositry.rule.branch = default_rules.brach,
-  all_public_repositry = {
+  all_private_repository.rule.branch = default_rules.branch,
+  all_public_repository = {
     rule = {
-      branch = default_rules.brach,
+      branch = default_rules.branch,
       tag = default_rules.tag,
     },
   },
