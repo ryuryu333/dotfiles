@@ -5,20 +5,19 @@ in
     deletion
       | Bool
       | optional,
-    nonFastForward
+    non_fast_forward
       | Bool
       | optional,
-    requiredLinearHistory
+    required_linear_history
       | Bool
       | optional,
-    requiredLinearHistory
-      | Bool
+    pull_request
+      | Array {
+        allowed_merge_methods
+          | Array [| 'merge, 'squash, 'rebase |]
+          | optional,
+      }
+      | contract_util.SingleElementArray
       | optional,
-    pull_request | {
-      allowed_merge_methods
-        | Array [| 'merge, 'squash, 'rebase ||]
-        | optional,
-    }
-    | optional,
   },
 }
