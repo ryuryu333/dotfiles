@@ -21,7 +21,7 @@ in
     list | { _ : RepositoryWithSetting },
   },
 
-  RepositryInput = {
+  RepositoryInput = {
     _ : ListWithBaseSetting
   },
 }

@@ -1,7 +1,7 @@
 let
   util = import "util/record.ncl",
   {
-    RepositryInput,
+    RepositoryInput,
     ListWithBaseSetting,
     RepositoryWithSetting,
     ..
@@ -108,7 +108,7 @@ let
 in
 {
   mk_resource
-    | RepositryInput -> ResourceSchema
+    | RepositoryInput -> ResourceSchema
     = fun repositories_groups =>
       repositories_groups
         |> std.record.map_values

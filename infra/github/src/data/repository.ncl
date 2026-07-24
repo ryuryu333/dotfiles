@@ -1,5 +1,5 @@
 let
-  { RepositryInput, .. } =
+  { RepositoryInput, .. } =
     import "schema/user_input/repository.ncl",
   my_ruleset = import "./ruleset.ncl",
   my_setting = import "./setting.ncl",
@@ -22,4 +22,4 @@ in
       },
     },
   },
-} | RepositryInput
+} | RepositoryInput
