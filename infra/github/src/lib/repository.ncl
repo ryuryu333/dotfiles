@@ -104,7 +104,7 @@ let
           )
           |> util.merge_record_values
 in
-let
+{
   mk_resource
     | RepositryInput -> ResourceSchema
     = fun repositories_groups =>
@@ -121,9 +121,4 @@ let
           repositories
             |> mk_ruleset_resource_from_repositories
         )
-in
-{
-  to_resource
-    : RepositryInput -> ResourceSchema
-    = mk_resource
-}  
+}
