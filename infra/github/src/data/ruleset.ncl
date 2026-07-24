@@ -33,7 +33,7 @@ in
         non_fast_forward = true, # force push 禁止
         # PR 必須
         pull_request = {
-          allowed_merge_methods = ['merge], # 履歴を忠実に残したいので merge を指定
+          allowed_merge_methods = ["merge"], # 履歴を忠実に残したいので merge を指定
         },
       },
     },
