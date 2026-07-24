@@ -21,13 +21,10 @@ let
         |> std.record.map_values (fun repository =>
           (
             input."!base_setting"
-              |> util.set_priority_1_top_field
+              |> util.set_priority_negative_1_top_field
           )
           &
-          (
-            repository
-              |> util.set_priority_2_top_field
-          )
+          repository
       ),
 
   merge_setting_into_each_repository
@@ -38,13 +35,10 @@ let
         |> std.record.map_values (fun repository =>
           (
             repository.setting
-              |> util.set_priority_1_top_field
+              |> util.set_priority_negative_2_top_field
           )
           &
-          (
-            repository
-              |> util.set_priority_2_top_field
-          )
+          repository
         ),
 
   set_repository_name_from_fieldname
