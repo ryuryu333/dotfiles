@@ -64,8 +64,8 @@ let
               ..repository_resource
             } => repository_resource)
         )
-        |> (fun repository_rsources => {
-          github_repository = repository_rsources,
+        |> (fun repository_resources => {
+          github_repository = repository_resources,
         }),
 
   mk_ruleset_resource
