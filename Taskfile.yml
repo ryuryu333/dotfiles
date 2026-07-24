@@ -6,6 +6,9 @@ includes:
   gcp:
     taskfile: ./infra/gcp/Taskfile.yml
     dir: ./infra/gcp
+  github:
+    taskfile: ./infra/github/Taskfile.yml
+    dir: ./infra/github
   winget:
     taskfile: ./config/winget/Taskfile.yml
     dir: ./config/winget
@@ -45,16 +48,6 @@ tasks:
     desc: Format nix files
     cmds:
       - cmd: nix fmt
-
-  tf:fmt:
-    desc: Format Terraform Nickel files
-    dir: infra/github
-    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
-
-  tf:build:
-    desc: Build Terraform JSON for GitHub
-    dir: infra/github
-    cmd: nickel export --format json --output terraform/main.tf.json src/main.ncl
 
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)

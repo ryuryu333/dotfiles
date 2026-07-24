@@ -1,0 +1,26 @@
+version: '3'
+
+tasks:
+  fmt:
+    desc: Format GitHub Nickel files
+    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
+
+  build:
+    desc: Build Terraform JSON for GitHub
+    cmd: nickel export --format json --output terraform/main.tf.json src/main.ncl
+
+  init:
+    desc: Initialize Terraform for GitHub
+    cmd: terraform -chdir=terraform init
+
+  validate:
+    desc: Validate Terraform configuration for GitHub
+    cmd: terraform -chdir=terraform validate
+
+  plan:
+    desc: Plan GitHub infrastructure changes
+    cmd: terraform -chdir=terraform plan
+
+  apply:
+    desc: Apply GitHub infrastructure changes
+    cmd: terraform -chdir=terraform apply
