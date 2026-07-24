@@ -1,4 +1,4 @@
-ref dotfiles/config/winget/AGENTS.md
+ref dotfiles/config/host/winget/AGENTS.md
 
 # 規則
 
