@@ -4,8 +4,8 @@ let
   { GithubRepositoryRulesetSchema, .. } =
     import "schema/resource/github_repository_ruleset.ncl",
 in
-let
-  BaseSchema = GithubRepositorySchema & {
+{
+  RepositoryWithSetting = GithubRepositorySchema & {
     name | default = "!tmp",
     visibility | default = "private",
     ruleset
@@ -15,11 +15,10 @@ let
       | GithubRepositorySchema
       | optional,
   },
-in
-{
+
   ListWithBaseSetting = {
-    "!base_setting" | BaseSchema,
-    list | { _ : BaseSchema },
+    "!base_setting" | RepositoryWithSetting,
+    list | { _ : RepositoryWithSetting },
   },
 
   RepositryInput = {
