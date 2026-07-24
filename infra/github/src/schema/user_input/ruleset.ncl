@@ -6,7 +6,7 @@ let
   } = import "schema/resource/github_repository_ruleset.ncl",
 in
 let
-  DefaulValue = {
+  DefaultValue = {
     name | default = "!tmp",
     repository | default = "!tmp",
     enforcement | default = "active",
@@ -15,10 +15,10 @@ in
 {
   RuleSetInput = {
     tag | {
-      _ : Array (GithubRepositoryRulesetTagSchema & DefaulValue)
+      _ : Array (GithubRepositoryRulesetTagSchema & DefaultValue)
     },
     branch | {
-      _ : Array (GithubRepositoryRulesetBranchSchema & DefaulValue)
+      _ : Array (GithubRepositoryRulesetBranchSchema & DefaultValue)
     },
   },
 }
