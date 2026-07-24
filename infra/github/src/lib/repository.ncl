@@ -61,8 +61,8 @@ let
             |> (fun {
               setting = _,
               ruleset = _,
-              ..repository_rsource
-            } => repository_rsource)
+              ..repository_resource
+            } => repository_resource)
         )
         |> (fun repository_rsources => {
           github_repository = repository_rsources,
