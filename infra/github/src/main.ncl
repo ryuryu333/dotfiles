@@ -15,7 +15,7 @@ let configuration
     & {
       resource =
         data.repository
-          |> mk_resource,
+        |> mk_resource,
     },
 in
 configuration

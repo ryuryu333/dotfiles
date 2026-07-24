@@ -1,5 +1,4 @@
-let
-  { RuleSetInput , .. } =
+let { RuleSetInput, .. } =
   import "schema/user_input/ruleset.ncl",
 in
 {
