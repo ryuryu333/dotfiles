@@ -15,10 +15,10 @@ in
 {
   RuleSetInput = {
     tag | {
-      _ : Array GithubRepositoryRulesetTagSchema & DefaulValue
+      _ : Array (GithubRepositoryRulesetTagSchema & DefaulValue)
     },
     branch | {
-      _ : Array GithubRepositoryRulesetBranchSchema & DefaulValue
+      _ : Array (GithubRepositoryRulesetBranchSchema & DefaulValue)
     },
   },
 }
