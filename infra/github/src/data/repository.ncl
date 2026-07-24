@@ -17,9 +17,7 @@ in
       "my-test-public" = {
         description = "動作確認用",
       },
-      "my-test-public2" = {
-        description = "動作確認用2",
-      },
+      dotfiles = {},
     },
   },
 } | RepositoryInput
