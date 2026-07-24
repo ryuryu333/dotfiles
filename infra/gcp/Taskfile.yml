@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+  init:
+    desc: Initialize Terraform for GCP
+    cmd: terraform -chdir=projects init
+
+  fmt:
+    desc: Check Terraform formatting for GCP
+    cmd: terraform -chdir=projects fmt -check
+
+  validate:
+    desc: Validate Terraform configuration for GCP
+    cmd: terraform -chdir=projects validate
+
+  plan:
+    desc: Plan GCP infrastructure changes
+    cmd: terraform -chdir=projects plan -var-file=projects.tfvars
+
+  apply:
+    desc: Apply GCP infrastructure changes
+    cmd: terraform -chdir=projects apply -var-file=projects.tfvars

@@ -67,22 +67,45 @@
     // flake-utils.lib.eachSystem supportSystems (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+              "terraform"
+            ];
+        };
       in
       {
         formatter = pkgs.nixfmt-tree;
 
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            go-task
-            nickel
-            gawk
-            bats.withLibraries
-            (p: [
-              p.bats-assert
-              p.bats-support
-            ])
-          ];
+        devShells = {
+          winget = pkgs.mkShell {
+            packages = with pkgs; [
+              go-task
+              nickel
+              nls
+              gawk
+              (bats.withLibraries (p: [
+                p.bats-assert
+                p.bats-support
+              ]))
+            ];
+          };
+          infra = pkgs.mkShell {
+            packages = with pkgs; [
+              go-task
+              nls
+              nickel
+              terraform
+              google-cloud-sdk
+              gh
+            ];
+            shellHook = ''
+              export NICKEL_IMPORT_PATH="$PWD/infra/github/src"
+            '';
+          };
+          default = self.devShells.${system}.infra;
         };
       }
     );

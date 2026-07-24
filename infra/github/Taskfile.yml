@@ -1,0 +1,37 @@
+version: '3'
+
+tasks:
+  fmt:
+    desc: Format GitHub Nickel files
+    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
+
+  build:
+    desc: Build Terraform JSON for GitHub
+    cmd: nickel export --format json --output terraform/main.tf.json src/main.ncl
+
+  init:
+    desc: Initialize Terraform for GitHub
+    cmd: terraform -chdir=terraform init
+
+  import:
+    desc: Import an existing GitHub resource into Terraform state
+    requires:
+      vars:
+        - RESOURCE_ADDRESS
+        - RESOURCE_ID
+    env:
+      TERRAFORM_IMPORT_ADDRESS: '{{.RESOURCE_ADDRESS}}'
+      TERRAFORM_IMPORT_ID: '{{.RESOURCE_ID}}'
+    cmd: terraform -chdir=terraform import "$TERRAFORM_IMPORT_ADDRESS" "$TERRAFORM_IMPORT_ID"
+
+  validate:
+    desc: Validate Terraform configuration for GitHub
+    cmd: terraform -chdir=terraform validate
+
+  plan:
+    desc: Plan GitHub infrastructure changes
+    cmd: terraform -chdir=terraform plan
+
+  apply:
+    desc: Apply GitHub infrastructure changes
+    cmd: terraform -chdir=terraform apply

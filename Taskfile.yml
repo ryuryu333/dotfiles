@@ -2,6 +2,17 @@ version: '3'
 
 silent: false
 
+includes:
+  gcp:
+    taskfile: ./infra/gcp/Taskfile.yml
+    dir: ./infra/gcp
+  github:
+    taskfile: ./infra/github/Taskfile.yml
+    dir: ./infra/github
+  winget:
+    taskfile: ./config/winget/Taskfile.yml
+    dir: ./config/winget
+
 tasks:
   default:
     cmds:
@@ -37,36 +48,6 @@ tasks:
     desc: Format nix files
     cmds:
       - cmd: nix fmt
-
-  winget:build:
-    desc: Build WinGet configuration
-    dir: config/winget
-    cmd: nickel export --format yaml --output output/configuration.winget main.ncl
-
-  winget:validate:
-    desc: Validate WinGet configuration
-    dir: config/winget
-    cmd: winget.exe configure validate --file "$(wslpath -w output/configuration.winget)"
-
-  winget:fmt:
-    desc: Format WinGet Nickel files
-    dir: config/winget
-    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
-
-  winget:apply:
-    desc: Apply WinGet configuration on Windows host
-    dir: config/winget
-    cmd: winget.exe configure --file "$(wslpath -w output/configuration.winget)"
-
-  winget:test:
-    desc: Test WinGet configuration on Windows host
-    dir: config/winget
-    cmd: winget.exe configure test --file "$(wslpath -w output/configuration.winget)" 2>&1 | bash util/log-winget-test-output.sh
-
-  winget:test:util:
-    desc: Test WinGet test result utility
-    dir: config/winget
-    cmd: bats util/test/test.bats
 
   first_switch:
     desc: First time setup for home-manager and nix-darwin (only macOS)
