@@ -25,7 +25,10 @@ let
     ref_name
       | {
         "include" | Array String,
-        exclude | Array String | optional,
+        exclude
+          | Array String
+          | default
+          = [],
       },
   },
 in
