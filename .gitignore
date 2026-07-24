@@ -24,3 +24,8 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 .terraformrc
+
+# GitHub Terraform
+/infra/github/terraform/*
+!/infra/github/terraform/.terraform.lock.hcl
+!/infra/github/terraform/example.tf.json
