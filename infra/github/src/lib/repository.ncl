@@ -18,7 +18,7 @@ let
     | ListWithBaseSetting -> { _ : RepositoryWithSetting }
     = fun input =>
       input.list
-        |> std.record.map (fun _ repository =>
+        |> std.record.map_values (fun repository =>
           input."!base_setting"
             |> util.set_priority_1_top_field
           &
@@ -26,20 +26,12 @@ let
             |> util.set_priority_2_top_field
       ),
 
-  merge_repositories_groups
-    | { _ : { _ : RepositoryWithSetting } }
-      -> { _ : RepositoryWithSetting }
-    = fun input =>
-      input
-        |> std.record.values
-        |> std.record.merge_all,
-
   merge_setting_into_each_repository
     | { _ : RepositoryWithSetting }
         -> { _ : RepositoryWithSetting }
     = fun repositories =>
       repositories
-        |> std.record.map (fun _ repository =>
+        |> std.record.map_values (fun repository =>
           repository.setting
             |> util.set_priority_1_top_field
           &
@@ -49,7 +41,7 @@ let
 
   set_repository_name_from_fieldname
     | { _ : RepositoryWithSetting }
-        -> { _ : RepositoryWithSetting }
+        ->{ _ : RepositoryWithSetting }
     = fun repositories =>
         repositories
           |> std.record.map (fun field_name repository =>
@@ -58,20 +50,26 @@ let
             ),
 
   mk_repository_source
-    | RepositoryWithSetting
-      -> GithubRepositorySchema
-    = fun repository =>
-      repository
-        |> (fun {
-            setting = _,
-            ruleset = _,
-            ..rest
-          } => rest),
+    | { _ : RepositoryWithSetting }
+      -> ResourceSchema
+    = fun repositories =>
+      repositories
+        |> std.record.map_values (fun repository =>
+          repository
+            |> (fun {
+              setting = _,
+              ruleset = _,
+              ..repository_rsource
+            } => repository_rsource)
+        )
+        |> (fun repository_rsources => {
+          github_repository = repository_rsources,
+        }),
 
   mk_ruleset_resource
     | String
       -> Array GithubRepositoryRulesetSchema
-      -> { _ : GithubRepositoryRulesetSchema }
+      -> ResourceSchema
     = fun repository_name rulesets =>
       rulesets
         |> std.array.map_with_index (fun index ruleset =>
@@ -87,20 +85,45 @@ let
             name | force = field_name,
             repository | force = repository_name,
           }
-        ),
-      
+        )
+        |> (fun ruleset_resources => {
+          github_repository_ruleset = ruleset_resources,
+        }),
 in
 let
-  to_resources
+  mk_ruleset_resource_from_repositories
+    | { _ : RepositoryWithSetting }
+      -> ResourceSchema
+    = fun repositories =>
+        repositories
+          |> std.record.map_values (fun repository =>
+            if std.record.has_field "ruleset" repository then
+              mk_ruleset_resource repository.name repository.ruleset
+            else
+              {}
+          )
+          |> util.merge_record_values
+in
+let
+  mk_resource
     | RepositryInput -> ResourceSchema
     = fun repositories_groups =>
       repositories_groups
-        |> std.record.map
+        |> std.record.map_values
             merge_base_setting_into_each_repository
-        |> merge_repositories_groups
+        |> util.merge_record_values
         |> merge_setting_into_each_repository
         |> set_repository_name_from_fieldname
+        |> (fun repositories =>
+          repositories
+            |> mk_repository_source
+          &
+          repositories
+            |> mk_ruleset_resource_from_repositories
+        )
 in
 {
-  
-}
+  to_resource
+    : RepositryInput -> ResourceSchema
+    = mk_resource
+}  

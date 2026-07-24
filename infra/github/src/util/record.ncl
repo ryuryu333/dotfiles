@@ -1,4 +1,11 @@
 {
+  merge_record_values
+    | { _ : { _ : Dyn } } -> { _ : Dyn }
+    = fun input =>
+      input
+        |> std.record.values
+        |> std.record.merge_all,
+
   set_priority_1_top_field
     : { _ : Dyn } -> { _ : Dyn }
     = fun record =>
