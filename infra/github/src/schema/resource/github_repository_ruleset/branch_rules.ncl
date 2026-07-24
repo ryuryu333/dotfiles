@@ -1,4 +1,4 @@
-let contract_util = import "../../../../../util/contract.ncl",
+let util = import "util/contract.ncl",
 in
 {
   BranchRulesSchema = {
@@ -12,12 +12,12 @@ in
       | Bool
       | optional,
     pull_request
-      | Array {
+      | {
         allowed_merge_methods
-          | Array [| 'merge, 'squash, 'rebase |]
+          | Array String
+          | util.allowedValues ["merge", "squash", "rebase"]
           | optional,
       }
-      | contract_util.SingleElementArray
       | optional,
   },
 }

@@ -1,15 +1,25 @@
 let
-  repositories = {
-    "my-test" = {
-      description = "動作確認用",
+  { RepositryInput, .. } =
+    import "schema/user_input/repository.ncl",
+  my_ruleset = import "./ruleset.ncl",
+  my_setting = import "./setting.ncl",
+in
+{
+  public = {
+    "!base_setting" = {
+      visibility = "public",
+      ruleset =
+        my_ruleset.tag.public_default
+        @ my_ruleset.branch.public_default,
+      setting = my_setting."default",
     },
-    "my-test-public" = {
-      description = "動作確認用",
-      private = false,
+    list = {
+      "my-test-public" = {
+        description = "動作確認用",
+      },
+      "my-test-public2" = {
+        description = "動作確認用2",
+      },
     },
   },
-  github_repository_schema =
-    import "../schema/resource/module/github_repository.ncl",
-in
-repositories
-  | { _ : github_repository_schema.GithubRepositoryInputSchema }
+} | RepositryInput

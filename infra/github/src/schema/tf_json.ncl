@@ -1,12 +1,22 @@
 let
-  { TerraformSchema } = import "./terraform/terraform.ncl",
-  { ProviderSchema } = import "./provider/provider.ncl",
-  { ResourceSchema } = import "./resource/resource.ncl",
+  { ResourceSchema, .. } =
+    import "schema/resource/resource.ncl",
 in
 {
   TfJsonSchema = {
-    terraform | TerraformSchema,
-    provider | ProviderSchema,
+    terraform | {
+      required_providers | {
+        github | {
+          source | String,
+          version | String,
+        }
+      }
+    },
+    provider | {
+      github | {
+        owner | String,
+      }
+    },
     resource | ResourceSchema,
   },
 }

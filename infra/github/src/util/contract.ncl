@@ -1,7 +1,6 @@
 {
-  SingleElementArray =
+  allowedValues : Array Dyn -> Dyn = fun allowed_vales =>
     std.contract.from_predicate (fun value =>
-      std.is_array value
-      && std.array.length value == 1
+      std.array.elem value allowed_vales
     ),
 }
