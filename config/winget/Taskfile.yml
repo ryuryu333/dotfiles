@@ -1,0 +1,26 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build WinGet configuration
+    cmd: nickel export --format yaml --output output/configuration.winget main.ncl
+
+  validate:
+    desc: Validate WinGet configuration
+    cmd: winget.exe configure validate --file "$(wslpath -w output/configuration.winget)"
+
+  fmt:
+    desc: Format WinGet Nickel files
+    cmd: find . -type f -name '*.ncl' -exec nickel format {} +
+
+  apply:
+    desc: Apply WinGet configuration on Windows host
+    cmd: winget.exe configure --file "$(wslpath -w output/configuration.winget)"
+
+  test:
+    desc: Test WinGet configuration on Windows host
+    cmd: winget.exe configure test --file "$(wslpath -w output/configuration.winget)" 2>&1 | bash util/log-winget-test-output.sh
+
+  test:util:
+    desc: Test WinGet test result utility
+    cmd: bats util/test/test.bats
