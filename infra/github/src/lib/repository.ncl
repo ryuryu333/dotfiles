@@ -19,11 +19,15 @@ let
     = fun input =>
       input.list
         |> std.record.map_values (fun repository =>
-          input."!base_setting"
-            |> util.set_priority_1_top_field
+          (
+            input."!base_setting"
+              |> util.set_priority_1_top_field
+          )
           &
-          repository
-            |> util.set_priority_2_top_field
+          (
+            repository
+              |> util.set_priority_2_top_field
+          )
       ),
 
   merge_setting_into_each_repository
@@ -32,11 +36,15 @@ let
     = fun repositories =>
       repositories
         |> std.record.map_values (fun repository =>
-          repository.setting
-            |> util.set_priority_1_top_field
+          (
+            repository.setting
+              |> util.set_priority_1_top_field
+          )
           &
-          repository
-            |> util.set_priority_2_top_field
+          (
+            repository
+              |> util.set_priority_2_top_field
+          )
         ),
 
   set_repository_name_from_fieldname
@@ -115,10 +123,14 @@ in
         |> merge_setting_into_each_repository
         |> set_repository_name_from_fieldname
         |> (fun repositories =>
-          repositories
-            |> mk_repository_source
+          (
+            repositories
+              |> mk_repository_source
+          )
           &
-          repositories
-            |> mk_ruleset_resource_from_repositories
+          (
+            repositories
+              |> mk_ruleset_resource_from_repositories
+          )
         )
 }
