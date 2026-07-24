@@ -84,9 +84,9 @@
             packages = with pkgs; [
               go-task
               nickel
+              nls
               gawk
-              (bats.withLibraries
-              (p: [
+              (bats.withLibraries (p: [
                 p.bats-assert
                 p.bats-support
               ]))
@@ -95,17 +95,17 @@
           infra = pkgs.mkShell {
             packages = with pkgs; [
               go-task
+              nls
+              nickel
               terraform
               google-cloud-sdk
               gh
             ];
+            shellHook = ''
+              export NICKEL_IMPORT_PATH="$PWD/infra/github/src"
+            '';
           };
-          default = pkgs.mkShell {
-            inputsFrom = [
-              self.devShells.${system}.winget
-              self.devShells.${system}.infra
-            ];
-          };
+          default = self.devShells.${system}.infra;
         };
       }
     );
