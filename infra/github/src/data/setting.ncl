@@ -1,6 +1,5 @@
-let
-  { SettingInput, .. } =
-    import "schema/user_input/setting.ncl",
+let { SettingInput, .. } =
+  import "schema/user_input/setting.ncl",
 in
 {
   "default" = {
