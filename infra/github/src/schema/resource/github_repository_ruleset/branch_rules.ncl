@@ -15,7 +15,7 @@ in
       | {
         allowed_merge_methods
           | Array String
-          | util.allowedValues ["merge", "squash", "rebase"]
+          | Array (util.allowedValues ["merge", "squash", "rebase"])
           | optional,
       }
       | optional,
