@@ -9,6 +9,17 @@
   - GitHub
   - GCP
 
+# 利用ツール
+
+- Nix: 各ツールの依存管理、統合、編集環境の管理など
+  - nix-darwin: システム環境管理（MacOS）
+  - system-manager: システム環境管理（WSL）
+  - home-manager: ユーザー環境管理
+- WinGet Configration v3
+- WinGet Configuration v3: システム/ユーザー環境管理（Windows）
+- Terraform: GCP や GitHub の管理
+- Nickel: winget や tf の生成
+
 # ディレクトリ構成
 
 - config
@@ -27,20 +38,20 @@
   - [NixOS/nix-installer](https://github.com/NixOS/nix-installer) 利用を想定
 
 # 運用
-環境適用
+詳細は task ファイル参照。
+
+```
+task -l
+```
+
+- 環境適用
 
 ```
 task
 ```
 
-パッケージ更新
+- 更新
 
 ```
 task update
-```
-
-その他（fmt 等）は以下で確認
-
-```
-task -l
 ```
