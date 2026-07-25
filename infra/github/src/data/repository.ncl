@@ -21,10 +21,11 @@ in
         description = "my tech-blog article",
       },
       dotfiles = {
-        description = "managing system/user enviroment and infrastructure"
+        description = "managing system/user enviroment and infrastructure",
+        license_template = "mit",
       },
       slide = {
-        description = "my slide"
+        description = "my slide",
       },
     },
   },

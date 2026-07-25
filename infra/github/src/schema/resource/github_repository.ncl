@@ -15,6 +15,12 @@ in
     has_projects
       | Bool
       | optional,
+    auto_init
+      | Bool
+      | optional,
+    license_template
+      | String
+      | optional,
     delete_branch_on_merge
       | Bool
       | optional,
