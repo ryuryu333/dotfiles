@@ -22,6 +22,7 @@ in
       },
       dotfiles = {
         description = "managing system/user enviroment and infrastructure"
+        license_template = "mit",
       },
       slide = {
         description = "my slide"
