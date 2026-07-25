@@ -6,6 +6,9 @@ let
 in
 {
   public = {
+    # == 値の優先度 ==
+    # base_setting < setting < 個別記述された値
+    # 再帰的統合ではなく、上書きなので注意
     "!base_setting" = {
       visibility = "public",
       ruleset =
