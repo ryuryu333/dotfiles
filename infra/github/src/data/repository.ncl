@@ -17,10 +17,15 @@ in
       setting = my_setting."default",
     },
     list = {
-      "my-test-public" = {
-        description = "動作確認用",
+      "zenn-contents" = {
+        description = "my tech-blog article",
       },
-      dotfiles = {},
+      dotfiles = {
+        description = "managing system/user enviroment and infrastructure"
+      },
+      slide = {
+        description = "my slide"
+      },
     },
   },
 } | RepositoryInput
