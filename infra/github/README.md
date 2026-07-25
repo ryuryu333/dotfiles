@@ -29,4 +29,3 @@ Nickel で GitHub の構成を定義し、Terraform JSON を生成して管理�
   - 必須/任意、初期値
 - `data` を編集
 - 入力形式が変わる場合は `scjema/user_input` や `lib` も更新
-f.json` へ出力する
