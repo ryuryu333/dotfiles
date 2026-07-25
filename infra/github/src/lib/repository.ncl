@@ -44,7 +44,7 @@ let
         repository
         & { name | force = field_name, }
       ),
-  mk_repository_source
+  mk_repository_resource
     | { _ : RepositoryWithSetting } -> ResourceSchema
     = fun repositories =>
       repositories
@@ -110,7 +110,7 @@ in
       |> (fun repositories =>
         (
           repositories
-          |> mk_repository_source
+          |> mk_repository_resource
         )
         & (
           repositories

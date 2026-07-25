@@ -10,8 +10,8 @@ includes:
     taskfile: ./infra/github/Taskfile.yml
     dir: ./infra/github
   winget:
-    taskfile: ./config/winget/Taskfile.yml
-    dir: ./config/winget
+    taskfile: ./config/host/winget/Taskfile.yml
+    dir: ./config/host/winget
 
 tasks:
   default:

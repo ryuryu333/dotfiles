@@ -42,7 +42,7 @@
         x86_64-linux
         aarch64-darwin
       ];
-      configurations = import ./config {
+      machineConfigOutputs = import ./config {
         inherit
           self
           nixpkgs
@@ -56,14 +56,15 @@
       };
     in
     {
-      # WSL/Mac の環境構築
-      inherit (configurations)
+      # WSL/Mac の環境構築用
+      inherit (machineConfigOutputs)
         systemConfigs
         darwinConfigurations
         checks
         apps
         ;
     }
+    # terraform の編集・実行用の環境など
     // flake-utils.lib.eachSystem supportSystems (
       system:
       let

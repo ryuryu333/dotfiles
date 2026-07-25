@@ -6,6 +6,9 @@ let
 in
 {
   public = {
+    # == 値の優先度 ==
+    # base_setting < setting < 個別記述された値
+    # 再帰的統合ではなく、上書きなので注意
     "!base_setting" = {
       visibility = "public",
       ruleset =
@@ -14,10 +17,15 @@ in
       setting = my_setting."default",
     },
     list = {
-      "my-test-public" = {
-        description = "動作確認用",
+      "zenn-contents" = {
+        description = "my tech-blog article",
       },
-      dotfiles = {},
+      dotfiles = {
+        description = "managing system/user enviroment and infrastructure"
+      },
+      slide = {
+        description = "my slide"
+      },
     },
   },
 } | RepositoryInput
