@@ -27,6 +27,10 @@ in
       slide = {
         description = "my slide",
       },
+      "nix-sample-code" = {
+        description = "Nix code for my articles",
+        license_template = "mit",
+      },
     },
   },
 } | RepositoryInput
