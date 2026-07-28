@@ -1,2 +1,47 @@
 ---
-test: 1
+apiVersion: gh-infra/v1
+defaults:
+  spec:
+    features:
+      issues: true
+      projects: false
+    merge_strategy:
+      auto_delete_head_branches: true
+    rulesets:
+    - conditions:
+        ref_name:
+          include:
+          - refs/tags/v*
+      enforcement: active
+      name: protect-version-tags
+      rules:
+        deletion: true
+        non_fast_forward: false
+      target: tag
+    - conditions:
+        ref_name:
+          include:
+          - ~DEFAULT_BRANCH
+      enforcement: active
+      name: protect-default-branch
+      rules:
+        deletion: true
+        non_fast_forward: true
+        pull_request:
+          required_approving_review_count: 0
+      target: branch
+    visibility: public
+kind: RepositorySet
+repositories:
+- name: zenn-contents
+  spec:
+    description: my tech-blog article
+- name: dotfiles
+  spec:
+    description: managing system/user enviroment and infrastructure
+- name: slide
+  spec:
+    description: my slide
+- name: nix-sample-code
+  spec:
+    description: Nix code for my articles
