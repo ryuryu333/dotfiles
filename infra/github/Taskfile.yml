@@ -1,0 +1,35 @@
+version: '3'
+
+vars:
+  GITHUB_OWNER: ryuryu333
+
+tasks:
+  fmt:
+    desc: Format GitHub Nickel files
+    cmd: find src data -type f -name '*.ncl' -exec nickel format {} +
+
+  build:
+    desc: Build GitHub infrastructure manifests
+    cmd: nickel export --format yaml --output src/output/configuration.yaml src/main.ncl
+
+  validate:
+    desc: Validate GitHub infrastructure manifests
+    deps:
+      - build
+    cmd: gh infra validate src/output
+
+  plan:
+    desc: Plan GitHub infrastructure changes
+    deps:
+      - build
+    cmd: gh infra plan src/output
+
+  apply:
+    desc: Apply GitHub infrastructure changes
+    deps:
+      - build
+    cmd: gh infra apply src/output
+
+  import:
+    desc: Import existing GitHub repository settings
+    cmd: gh infra import {{.GITHUB_OWNER}}/{{.CLI_ARGS}} > src/imported-data/{{.CLI_ARGS}}.yaml
