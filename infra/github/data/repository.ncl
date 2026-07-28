@@ -1,24 +1,16 @@
-let
-  myspec = import "./spec.ncl",
-  myruleset = import "./rulesets.ncl",
+let myspec = import "./spec.ncl",
 in
-let
-  my_reconcile = {
-    # labels = "authoritative",
-    rulesets = "authoritative",
-  },
+let all_authoritative = {
+  # labels = "authoritative",
+  rulesets = "authoritative",
+},
 in
 {
   public = {
-    defaults.reconcile = my_reconcile,
-    defaults.spec =
-      myspec.public
-      & {
-        rulesets = [
-          myruleset.tag."v*",
-          myruleset.branch."default",
-        ],
-      },
+    defaults = {
+      reconcile = all_authoritative,
+      spec = myspec.public,
+    },
     repositories = {
       "zenn-contents" = {
         spec.description = "my tech-blog article",
@@ -35,7 +27,10 @@ in
     },
   },
   private = {
-    defaults.spec = myspec.private,
+    defaults = {
+      reconcile = all_authoritative,
+      spec = myspec.private,
+    },
     repositories = {
       "dotfiles-private" = {},
     },

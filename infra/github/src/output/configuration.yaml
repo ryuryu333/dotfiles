@@ -1,6 +1,8 @@
 ---
 apiVersion: gh-infra/v1
 defaults:
+  reconcile:
+    rulesets: authoritative
   spec:
     features:
       issues: true

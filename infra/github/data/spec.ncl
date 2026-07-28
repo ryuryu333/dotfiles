@@ -1,3 +1,5 @@
+let myruleset = import "./rulesets.ncl",
+in
 {
   public = {
     visibility = "public",
@@ -6,6 +8,10 @@
       issues = true,
       projects = false,
     },
+    rulesets = [
+      myruleset.tag."v*",
+      myruleset.branch."default",
+    ],
   },
   private = {
     visibility = "private",
