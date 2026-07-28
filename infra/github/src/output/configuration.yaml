@@ -5,6 +5,21 @@ defaults:
     features:
       issues: true
       projects: false
+    visibility: private
+kind: RepositorySet
+metadata:
+  owner: ryuryu333
+repositories:
+- name: dotfiles-private
+---
+apiVersion: gh-infra/v1
+defaults:
+  reconcile:
+    rulesets: authoritative
+  spec:
+    features:
+      issues: true
+      projects: false
     merge_strategy:
       auto_delete_head_branches: true
     rulesets:
@@ -28,20 +43,26 @@ defaults:
         deletion: true
         non_fast_forward: true
         pull_request:
+          dismiss_stale_reviews_on_push: false
+          require_code_owner_review: false
+          require_last_push_approval: false
           required_approving_review_count: 0
+          required_review_thread_resolution: false
       target: branch
     visibility: public
 kind: RepositorySet
+metadata:
+  owner: ryuryu333
 repositories:
-- name: zenn-contents
-  spec:
-    description: my tech-blog article
 - name: dotfiles
   spec:
     description: managing system/user enviroment and infrastructure
-- name: slide
-  spec:
-    description: my slide
 - name: nix-sample-code
   spec:
     description: Nix code for my articles
+- name: slide
+  spec:
+    description: my slide
+- name: zenn-contents
+  spec:
+    description: my tech-blog article

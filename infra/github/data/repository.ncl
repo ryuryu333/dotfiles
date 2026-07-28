@@ -2,10 +2,17 @@ let
   myspec = import "./spec.ncl",
   myruleset = import "./rulesets.ncl",
 in
+let
+  my_reconcile = {
+    # labels = "authoritative",
+    rulesets = "authoritative",
+  },
+in
 {
   public = {
+    defaults.reconcile = my_reconcile,
     defaults.spec =
-      myspec.public.normal
+      myspec.public
       & {
         rulesets = [
           myruleset.tag."v*",
@@ -28,7 +35,7 @@ in
     },
   },
   private = {
-    defaults.spec = myspec.public.normal,
+    defaults.spec = myspec.private,
     repositories = {
       "dotfiles-private" = {},
     },

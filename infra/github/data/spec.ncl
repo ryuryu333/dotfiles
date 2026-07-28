@@ -1,13 +1,13 @@
 {
-  public.normal = {
+  public = {
     visibility = "public",
+    merge_strategy.auto_delete_head_branches = true,
     features = {
       issues = true,
       projects = false,
-      merge_strategy.auto_delete_head_branches = true,
     },
   },
-  private.normal = {
+  private = {
     visibility = "private",
     features = {
       issues = true,
