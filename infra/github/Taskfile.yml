@@ -10,7 +10,10 @@ tasks:
 
   build:
     desc: Build GitHub infrastructure manifests
-    cmd: nickel export --format yaml --output src/output/configuration.yaml src/main.ncl
+    cmd:
+      nickel export src/main.ncl
+      --format yaml-documents
+      --output src/output/configuration.yaml
 
   validate:
     desc: Validate GitHub infrastructure manifests
