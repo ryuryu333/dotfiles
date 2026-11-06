@@ -32,6 +32,9 @@ in
       spec = myspec.private,
     },
     repositories = {
+      blog = {
+        spec.description = "my blog",
+      },
       "dotfiles-private" = {},
     },
   },

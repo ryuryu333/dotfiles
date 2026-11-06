@@ -18,6 +18,9 @@ kind: RepositorySet
 metadata:
   owner: ryuryu333
 repositories:
+- name: blog
+  spec:
+    description: my blog
 - name: dotfiles-private
 ---
 apiVersion: gh-infra/v1
