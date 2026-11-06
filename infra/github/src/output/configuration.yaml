@@ -1,0 +1,83 @@
+---
+apiVersion: gh-infra/v1
+defaults:
+  reconcile:
+    rulesets: authoritative
+  spec:
+    features:
+      issues: true
+      projects: false
+      wiki: false
+    merge_strategy:
+      allow_merge_commit: true
+      allow_rebase_merge: false
+      allow_squash_merge: false
+      auto_delete_head_branches: true
+    visibility: private
+kind: RepositorySet
+metadata:
+  owner: ryuryu333
+repositories:
+- name: blog
+  spec:
+    description: my blog
+- name: dotfiles-private
+---
+apiVersion: gh-infra/v1
+defaults:
+  reconcile:
+    rulesets: authoritative
+  spec:
+    features:
+      issues: true
+      projects: false
+      wiki: false
+    merge_strategy:
+      allow_merge_commit: true
+      allow_rebase_merge: false
+      allow_squash_merge: false
+      auto_delete_head_branches: true
+    rulesets:
+    - conditions:
+        ref_name:
+          include:
+          - refs/tags/v*
+      enforcement: active
+      name: protect-version-tags
+      rules:
+        deletion: true
+        non_fast_forward: false
+      target: tag
+    - conditions:
+        ref_name:
+          include:
+          - ~DEFAULT_BRANCH
+      enforcement: active
+      name: protect-default-branch
+      rules:
+        deletion: true
+        non_fast_forward: true
+        pull_request:
+          dismiss_stale_reviews_on_push: false
+          require_code_owner_review: false
+          require_last_push_approval: false
+          required_approving_review_count: 0
+          required_review_thread_resolution: false
+      target: branch
+    visibility: public
+kind: RepositorySet
+metadata:
+  owner: ryuryu333
+repositories:
+- name: dotfiles
+  spec:
+    description: managing system/user enviroment and infrastructure
+- name: nix-sample-code
+  spec:
+    description: Nix code for my articles
+- name: slide
+  spec:
+    description: my slide
+- name: zenn-contents
+  spec:
+    description: my tech-blog article

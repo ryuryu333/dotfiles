@@ -17,8 +17,9 @@
   - home-manager: ユーザー環境管理
 - WinGet Configration v3
 - WinGet Configuration v3: システム/ユーザー環境管理（Windows）
-- Terraform: GCP や GitHub の管理
-- Nickel: winget や tf の生成
+- Terraform: GCP の管理
+- gh infra: GitHub の管理
+- Nickel: WinGet 設定や gh infra 用 YAML の生成
 
 # ディレクトリ構成
 

@@ -1,0 +1,227 @@
+{
+  "provider": {
+    "github": {
+      "owner": "ryuryu333"
+    }
+  },
+  "resource": {
+    "github_repository": {
+      "dotfiles": {
+        "archive_on_destroy": true,
+        "auto_init": true,
+        "delete_branch_on_merge": true,
+        "description": "managing system/user enviroment and infrastructure",
+        "has_issues": true,
+        "has_projects": false,
+        "license_template": "mit",
+        "name": "dotfiles",
+        "visibility": "public"
+      },
+      "nix-sample-code": {
+        "archive_on_destroy": true,
+        "auto_init": true,
+        "delete_branch_on_merge": true,
+        "description": "Nix code for my articles",
+        "has_issues": true,
+        "has_projects": false,
+        "license_template": "mit",
+        "name": "nix-sample-code",
+        "visibility": "public"
+      },
+      "slide": {
+        "archive_on_destroy": true,
+        "auto_init": true,
+        "delete_branch_on_merge": true,
+        "description": "my slide",
+        "has_issues": true,
+        "has_projects": false,
+        "name": "slide",
+        "visibility": "public"
+      },
+      "zenn-contents": {
+        "archive_on_destroy": true,
+        "auto_init": true,
+        "delete_branch_on_merge": true,
+        "description": "my tech-blog article",
+        "has_issues": true,
+        "has_projects": false,
+        "name": "zenn-contents",
+        "visibility": "public"
+      }
+    },
+    "github_repository_ruleset": {
+      "dotfiles-0": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/tags/v*"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "dotfiles-0",
+        "repository": "dotfiles",
+        "rules": {
+          "deletion": true,
+          "update": true
+        },
+        "target": "tag"
+      },
+      "dotfiles-1": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "~DEFAULT_BRANCH"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "dotfiles-1",
+        "repository": "dotfiles",
+        "rules": {
+          "deletion": true,
+          "non_fast_forward": true,
+          "pull_request": {
+            "allowed_merge_methods": [
+              "merge"
+            ]
+          }
+        },
+        "target": "branch"
+      },
+      "nix-sample-code-0": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/tags/v*"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "nix-sample-code-0",
+        "repository": "nix-sample-code",
+        "rules": {
+          "deletion": true,
+          "update": true
+        },
+        "target": "tag"
+      },
+      "nix-sample-code-1": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "~DEFAULT_BRANCH"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "nix-sample-code-1",
+        "repository": "nix-sample-code",
+        "rules": {
+          "deletion": true,
+          "non_fast_forward": true,
+          "pull_request": {
+            "allowed_merge_methods": [
+              "merge"
+            ]
+          }
+        },
+        "target": "branch"
+      },
+      "slide-0": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/tags/v*"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "slide-0",
+        "repository": "slide",
+        "rules": {
+          "deletion": true,
+          "update": true
+        },
+        "target": "tag"
+      },
+      "slide-1": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "~DEFAULT_BRANCH"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "slide-1",
+        "repository": "slide",
+        "rules": {
+          "deletion": true,
+          "non_fast_forward": true,
+          "pull_request": {
+            "allowed_merge_methods": [
+              "merge"
+            ]
+          }
+        },
+        "target": "branch"
+      },
+      "zenn-contents-0": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/tags/v*"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "zenn-contents-0",
+        "repository": "zenn-contents",
+        "rules": {
+          "deletion": true,
+          "update": true
+        },
+        "target": "tag"
+      },
+      "zenn-contents-1": {
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "~DEFAULT_BRANCH"
+            ]
+          }
+        },
+        "enforcement": "active",
+        "name": "zenn-contents-1",
+        "repository": "zenn-contents",
+        "rules": {
+          "deletion": true,
+          "non_fast_forward": true,
+          "pull_request": {
+            "allowed_merge_methods": [
+              "merge"
+            ]
+          }
+        },
+        "target": "branch"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "github": {
+        "source": "integrations/github",
+        "version": "~> 6.0"
+      }
+    }
+  }
+}

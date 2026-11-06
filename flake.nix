@@ -103,7 +103,7 @@
               gh
             ];
             shellHook = ''
-              export NICKEL_IMPORT_PATH="$PWD/infra/github/src"
+              export NICKEL_IMPORT_PATH="$PWD/infra/github"
             '';
           };
           default = self.devShells.${system}.infra;

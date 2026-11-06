@@ -1,21 +1,25 @@
 let
-  { TfJsonSchema, .. } =
-    import "schema/tf_json.ncl",
-  { mk_resource, .. } =
-    import "lib/repository.ncl",
-  data = {
-    provider = import "data/provider.ncl",
-    repository = import "data/repository.ncl",
-  },
+  data = import "data/repository.ncl",
+  lib = import "src/lib/repository.ncl",
+  base = import "data/base.ncl",
 in
-let configuration
-  | TfJsonSchema
-  =
-    data.provider
+let record_of_repositories =
+  data
+  |> std.record.map_values (fun group =>
+    group
     & {
-      resource =
-        data.repository
-        |> mk_resource,
-    },
+      repositories | force =
+        group.repositories
+        |> lib.set_name_from_fieldname
+        |> std.record.values
+    }
+  ),
 in
-configuration
+let output =
+  record_of_repositories
+  |> std.record.map_values (fun group =>
+    group & base
+  )
+  |> std.record.values
+in
+output
