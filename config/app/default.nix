@@ -1,5 +1,6 @@
 {
   imports = [
+    ./claude-code
     ./direnv
     ./gh
     ./git

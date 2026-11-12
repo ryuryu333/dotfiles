@@ -3,6 +3,7 @@
   home,
   modulePaths,
   nix-versions,
+  llm-agents,
   ...
 }:
 {
@@ -13,6 +14,7 @@
       inherit
         modulePaths
         nix-versions
+        llm-agents
         user
         home
         ;

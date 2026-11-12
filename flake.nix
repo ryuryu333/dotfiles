@@ -53,6 +53,7 @@
           nix-darwin
           nix-homebrew
           nix-versions
+          llm-agents
           ;
         module = dotfiles-private.homeManagerModules.git-email;
       };

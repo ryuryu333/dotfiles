@@ -6,6 +6,7 @@
   nix-darwin,
   nix-homebrew,
   nix-versions,
+  llm-agents,
   module,
 }:
 let
@@ -36,7 +37,7 @@ in
     main_wsl = system-manager.lib.makeSystemConfig {
       specialArgs = {
         inherit (my_pc.wsl) user hostPlatform home;
-        inherit modulePaths nix-versions;
+        inherit modulePaths nix-versions llm-agents;
       };
       modules = [
         ./host/system-manager/main-wsl
@@ -49,7 +50,12 @@ in
     # MacBook Pro M1
     "${my_pc.mac.hostname}" = nix-darwin.lib.darwinSystem {
       specialArgs = {
-        inherit self modulePaths nix-versions;
+        inherit
+          self
+          modulePaths
+          nix-versions
+          llm-agents
+          ;
         inherit (my_pc.mac) user hostPlatform home;
       };
       modules = [
