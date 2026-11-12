@@ -14,6 +14,8 @@
       permissions.blockWritesOutsideWorkingDirectories = true;
       permissions.blockReadsOutsideWorkingDirectories = true;
       promptSuggestionEnabled = false;
+      showTurnDuration = false;
+      spinnerTipsEnabled = false;
       preferredNotifChannel = "terminal_bell";
       sandbox = {
         enabled = true;
