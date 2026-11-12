@@ -10,6 +10,16 @@
     settings = {
       language = "japanese";
       axScreenReader = true;
+      permissions.defaultMode = "acceptEdits";
+      permissions.blockWritesOutsideWorkingDirectories = true;
+      promptSuggestionEnabled = false;
+      preferredNotifChannel = "terminal_bell";
+      sandbox = {
+        enabled = true;
+        autoAllowBashIfSandboxed = true;
+        allowUnsandboxedCommands = false;
+        failIfUnavailable = true;
+      };
     };
   };
 }
