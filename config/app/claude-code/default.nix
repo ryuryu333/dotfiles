@@ -12,6 +12,7 @@
       axScreenReader = true;
       permissions.defaultMode = "acceptEdits";
       permissions.blockWritesOutsideWorkingDirectories = true;
+      permissions.blockReadsOutsideWorkingDirectories = true;
       promptSuggestionEnabled = false;
       preferredNotifChannel = "terminal_bell";
       sandbox = {
