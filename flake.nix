@@ -22,6 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    llm-agents.url = "github:numtide/llm-agents.nix";
     nix-versions.url = "github:vic/nix-versions";
   };
 
@@ -36,6 +37,7 @@
       nix-darwin,
       nix-homebrew,
       nix-versions,
+      llm-agents,
     }:
     let
       supportSystems = with flake-utils.lib.system; [
