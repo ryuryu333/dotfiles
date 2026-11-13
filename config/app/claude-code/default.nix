@@ -28,6 +28,7 @@
     skills = {
       user-facing-reply-format = ./skills/user-facing-reply-format.md;
       nix-devshell-in-sandbox = ./skills/nix-devshell-in-sandbox.md;
+      role-boundary-perspective = ./skills/role-boundary-perspective.md;
     };
     rules = {
       discussion-granularity = ./rules/discussion-granularity.md;
