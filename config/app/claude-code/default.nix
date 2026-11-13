@@ -17,12 +17,16 @@
       showTurnDuration = false;
       spinnerTipsEnabled = false;
       preferredNotifChannel = "terminal_bell";
+      outputStyle = "Explanatory";
       sandbox = {
         enabled = true;
         autoAllowBashIfSandboxed = true;
         allowUnsandboxedCommands = false;
         failIfUnavailable = true;
       };
+    };
+    skills = {
+      user-facing-reply-format = ./skills/user-facing-reply-format.md;
     };
   };
 }
