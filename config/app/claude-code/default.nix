@@ -31,6 +31,7 @@
     };
     rules = {
       discussion-granularity = ./rules/discussion-granularity.md;
+      proposal-justification = ./rules/proposal-justification.md;
     };
   };
 }
