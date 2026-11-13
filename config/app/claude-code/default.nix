@@ -34,6 +34,7 @@
       proposal-justification = ./rules/proposal-justification.md;
       delegation-roles = ./rules/delegation-roles.md;
       plan-mode-approval = ./rules/plan-mode-approval.md;
+      design-integrity = ./rules/design-integrity.md;
     };
   };
 }
