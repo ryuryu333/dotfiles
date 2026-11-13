@@ -29,5 +29,8 @@
       user-facing-reply-format = ./skills/user-facing-reply-format.md;
       nix-devshell-in-sandbox = ./skills/nix-devshell-in-sandbox.md;
     };
+    rules = {
+      discussion-granularity = ./rules/discussion-granularity.md;
+    };
   };
 }
