@@ -10,7 +10,7 @@
     settings = {
       language = "japanese";
       axScreenReader = true;
-      permissions.defaultMode = "acceptEdits";
+      permissions.defaultMode = "auto";
       permissions.blockWritesOutsideWorkingDirectories = true;
       permissions.blockReadsOutsideWorkingDirectories = true;
       promptSuggestionEnabled = false;
