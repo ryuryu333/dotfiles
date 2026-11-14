@@ -32,6 +32,7 @@
       expression-perspective = ./skills/expression-perspective.md;
       content-placement-perspective = ./skills/content-placement-perspective.md;
       structure-perspective = ./skills/structure-perspective.md;
+      cause-investigation = ./skills/cause-investigation.md;
     };
     rules = {
       discussion-granularity = ./rules/discussion-granularity.md;
