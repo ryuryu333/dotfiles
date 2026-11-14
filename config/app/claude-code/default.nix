@@ -31,6 +31,7 @@
       role-boundary-perspective = ./skills/role-boundary-perspective.md;
       expression-perspective = ./skills/expression-perspective.md;
       content-placement-perspective = ./skills/content-placement-perspective.md;
+      structure-perspective = ./skills/structure-perspective.md;
     };
     rules = {
       discussion-granularity = ./rules/discussion-granularity.md;
