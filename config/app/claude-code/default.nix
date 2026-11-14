@@ -17,7 +17,6 @@
       showTurnDuration = false;
       spinnerTipsEnabled = false;
       preferredNotifChannel = "terminal_bell";
-      outputStyle = "Explanatory";
       sandbox = {
         enabled = true;
         autoAllowBashIfSandboxed = true;
