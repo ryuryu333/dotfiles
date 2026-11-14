@@ -39,6 +39,7 @@
       delegation-roles = ./rules/delegation-roles.md;
       plan-mode-approval = ./rules/plan-mode-approval.md;
       design-integrity = ./rules/design-integrity.md;
+      stage-alignment = ./rules/stage-alignment.md;
     };
   };
 }
