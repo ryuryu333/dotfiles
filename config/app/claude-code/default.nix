@@ -42,6 +42,7 @@
       design-integrity = ./rules/design-integrity.md;
       stage-alignment = ./rules/stage-alignment.md;
       fact-information-inference = ./rules/fact-information-inference.md;
+      plan-granularity = ./rules/plan-granularity.md;
     };
   };
 }
