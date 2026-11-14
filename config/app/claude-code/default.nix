@@ -40,6 +40,7 @@
       plan-mode-approval = ./rules/plan-mode-approval.md;
       design-integrity = ./rules/design-integrity.md;
       stage-alignment = ./rules/stage-alignment.md;
+      fact-information-inference = ./rules/fact-information-inference.md;
     };
   };
 }
