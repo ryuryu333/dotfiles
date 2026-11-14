@@ -30,6 +30,7 @@
       nix-devshell-in-sandbox = ./skills/nix-devshell-in-sandbox.md;
       role-boundary-perspective = ./skills/role-boundary-perspective.md;
       expression-perspective = ./skills/expression-perspective.md;
+      content-placement-perspective = ./skills/content-placement-perspective.md;
     };
     rules = {
       discussion-granularity = ./rules/discussion-granularity.md;
