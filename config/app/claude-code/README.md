@@ -8,7 +8,7 @@
 
 - サンドボックス内では nix develop を使わない。VS Code の direnv 拡張が評価した devshell の環境を、Claude Code が引き継いで使う。
 - devshell の評価と Nix ストアへの変更は user が行う。Claude は更新が必要なときに user に伝える。
-- Claude 向けの指示は skills/nix-devshell-in-sandbox.md にある。
+- Claude 向けの指示は skills/nix-devshell-in-sandbox/SKILL.md にある。
 
 #### サンドボックス内で nix develop が失敗する原因
 

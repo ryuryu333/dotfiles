@@ -24,16 +24,7 @@
         failIfUnavailable = true;
       };
     };
-    skills = {
-      user-facing-reply-format = ./skills/user-facing-reply-format.md;
-      nix-devshell-in-sandbox = ./skills/nix-devshell-in-sandbox.md;
-      role-boundary-perspective = ./skills/role-boundary-perspective.md;
-      expression-perspective = ./skills/expression-perspective.md;
-      content-placement-perspective = ./skills/content-placement-perspective.md;
-      structure-perspective = ./skills/structure-perspective.md;
-      cause-investigation = ./skills/cause-investigation.md;
-      information-gathering-commands = ./skills/information-gathering-commands.md;
-    };
+    skills = ./skills;
     rules = {
       discussion-granularity = ./rules/discussion-granularity.md;
       proposal-justification = ./rules/proposal-justification.md;
